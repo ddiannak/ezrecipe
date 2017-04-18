@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.1.0_48cade6bb86df99e6c01e20f47d169f1d615b89c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.1.0_75957290dbdc7bf68a2f428537c77c6edc8ca484/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.1.0_ddcdbab88ab6a219447f6c2c9fb8745593a8aef9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.1.0_29c62e8db309fc1cd596f60b8fc7e86497c7d2e4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2372c60cd38cf3ceb13041bd0281906e081d9de2">
+        <dex dex="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_7e063690944d1afb0a71225be2d28eb889169c4d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.1.0_9acf52b143681af2bb09c6581e0a8af5c12578ba/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.1.0_0fd6bafb5f66a3d81b8adcbec8f47bff3b60d6df/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.1.0_bb6a4b31b0841c3dfcafa712b81398470eaffb65/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Brian/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.0/support-annotations-25.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
+        <dex dex="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.1.0_88b4015201b0e8eca527535196a03db306d37870/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="eca4378d283ebfb3492b0869646050e76f9b2155">
+        <dex dex="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_ec4d958befdf36b085033ddd1bea2cacab5c4386/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
+        <dex dex="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.1.0_2e8103822dccd99fc1c5bd46a6ca0b4310a77265/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="/Users/Brian/Desktop/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.1.0_26576fc058563590d8ec2ef36e555b489c212a34/classes.dex" />
+    </item>
+
+</items>
