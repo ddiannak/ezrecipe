@@ -25,26 +25,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        String items="";
         chicken = (CheckBox) findViewById(R.id.chicken);
         beef = (CheckBox) findViewById(R.id.beef);
         rice = (CheckBox) findViewById(R.id.rice);
         text = (TextView)findViewById(R.id.chickenTest);
         ingredients = (Button)findViewById(R.id.ingredients);
-        Log.i("hi", "hello");
-        String message = "abc";
-//        selectItems(findViewById(android.R.id.content));
-//        getIngredients();
-        new CallMashapeAsync().execute(message);
+
+        ingredients.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               new CallMashapeAsync().execute();
+            }
+        });
     }
 
-    public void getIngredients(View v){
-        String final_selections = "";
-        for (String Selections : selection){
-            final_selections = final_selections + Selections + "\n";
-        }
-//        text.setText(final_selections);
-    }
+//    public void getIngredients(View v){
+////        String final_selections = "";
+////        for (String Selections : selection){
+////            final_selections = final_selections + Selections + "\n";
+////        }
+////        text.setText(final_selections);
+
+//    }
 
 
 
@@ -79,19 +82,27 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
         }
+        Log.i("List: ", selection.toString());
     }
 
     private class CallMashapeAsync extends AsyncTask<String, Integer, HttpResponse<JsonNode>> {
 
         protected HttpResponse<JsonNode> doInBackground(String... msg) {
-
+            String items = "";
+            for (int i=0; i<selection.size(); i++){
+                items = items + "" + selection.get(i) + "%2C";
+            }
+            String url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients="+items+ "&limitLicense=false&number=5&ranking=1";
+            Log.i("url: ", url);
             HttpResponse<JsonNode> request = null;
             try {
-                request = Unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/479101/information?includeNutrition=false")
-                        //.header("X-Mashape-Authorization", "IBIjQLdnrhmsh19NxOPSpjaWSVIqp1owlcfjsnmDQyC8gFp1HD")
-                        .header("X-Mashape-Authorization", "gNrvLXTPTNmshsXWUXLzm7VwvkJWp1m47mVjsn5eRbKVitWD4i")
+
+                request = Unirest.get(url)
+                        .header("X-Mashape-Key", "gNrvLXTPTNmshsXWUXLzm7VwvkJWp1m47mVjsn5eRbKVitWD4i")
+                        .header("Accept", "application/json")
                         .asJson();
                 Log.i("request", "" + request);
+                Log.i("List: ", selection.toString());
             } catch (UnirestException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
