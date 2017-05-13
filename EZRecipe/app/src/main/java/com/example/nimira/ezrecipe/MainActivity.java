@@ -14,11 +14,16 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<String> selection = new ArrayList<String>();
     TextView text;
+    TextView test;
     CheckBox chicken, beef, rice;
     Button ingredients;
     @Override
@@ -30,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         beef = (CheckBox) findViewById(R.id.beef);
         rice = (CheckBox) findViewById(R.id.rice);
         text = (TextView)findViewById(R.id.chickenTest);
+        test = (TextView) findViewById(R.id.textView);
         ingredients = (Button)findViewById(R.id.ingredients);
 
         ingredients.setOnClickListener( new View.OnClickListener() {
@@ -117,7 +123,19 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(HttpResponse<JsonNode> response) {
             String answer = response.getBody().toString();
 //            TextView txtView = (TextView) findViewById(R.id.textView1);
-            text.setText(answer);
+            try {
+               // JSONObject root = new JSONObject(answer);
+                JSONArray root = new JSONArray(answer);
+               // JSONArray recipe_name = root.getJSONArray(0);
+                JSONObject id_num = root.getJSONObject(0);
+                int id = id_num.getInt("id");
+                String idstr = id_num.getString("id");
+                test.setText(idstr);
+            }
+            catch (JSONException e) {
+                test.setText("failed: make sure you are getting the right type");
+                text.setText(answer);
+            }
         }
     }
 }
