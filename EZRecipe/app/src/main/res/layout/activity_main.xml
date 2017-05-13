@@ -11,7 +11,7 @@
     tools:context="com.example.nimira.ezrecipe.MainActivity">
 
     <TextView
-        android:text="TextView"
+        android:text="^-^"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -29,8 +29,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginBottom="91dp"
-        android:id="@+id/ingredients"
-        android:onClick="getIngredients" />
+        android:id="@+id/ingredients" />
 
     <CheckBox
         android:text="chicken"
