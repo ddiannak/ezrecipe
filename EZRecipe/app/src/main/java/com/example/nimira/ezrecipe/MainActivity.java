@@ -14,6 +14,8 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
         }
 //        text.setText(final_selections);
     }
-
-
 
     public void selectItems(View v){
         boolean checked = ((CheckBox) v).isChecked();
@@ -105,6 +105,13 @@ public class MainActivity extends AppCompatActivity {
 
         protected void onPostExecute(HttpResponse<JsonNode> response) {
             String answer = response.getBody().toString();
+            try {
+                String recipe_url = response.getCode(17);
+                // String recipe_url = response.
+            }
+            catch (final JSONException e) {
+                Log.i("JSONException", "incorrect response");
+            }
 //            TextView txtView = (TextView) findViewById(R.id.textView1);
             text.setText(answer);
         }
