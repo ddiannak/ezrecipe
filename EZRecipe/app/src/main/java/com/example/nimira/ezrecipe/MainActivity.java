@@ -25,7 +25,12 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> checkedIngredients = new ArrayList<String>();
     ArrayList<JSONObject> info = new ArrayList<JSONObject>();
     TextView text;
+<<<<<<< HEAD
 //    CheckBox chicken, beef, rice;
+=======
+    TextView test;
+    CheckBox chicken, beef, rice;
+>>>>>>> 301426c9e8a96429c78bf532f1182c870c9f1db5
     Button ingredients;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 //        beef = (CheckBox) findViewById(beef);
 //        rice = (CheckBox) findViewById(rice);
         text = (TextView)findViewById(R.id.chickenTest);
+        test = (TextView) findViewById(R.id.textView);
         ingredients = (Button)findViewById(R.id.ingredients);
         ingredients.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -168,7 +174,6 @@ public class MainActivity extends AppCompatActivity {
             catch (JSONException e) {
                 text.setText("failed: make sure you are getting the right type");
 //                text.setText(answer);
-            }
         }
     }
 }
