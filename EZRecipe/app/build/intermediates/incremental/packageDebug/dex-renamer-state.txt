@@ -1,0 +1,7 @@
+#Mon May 15 11:55:22 PDT 2017
+base.0=/Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_05b0fbf65ef1bb959cd6288e064ac33104954c40
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_ce80287ef5cff32581491736f0131a8766ff2c91/classes.dex
+base.1=/Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_ce80287ef5cff32581491736f0131a8766ff2c91
+file.0=/Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_05b0fbf65ef1bb959cd6288e064ac33104954c40/classes.dex

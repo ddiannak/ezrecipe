@@ -1,0 +1,220 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml:2:1-21:12
+	package
+		ADDED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml:3:5-42
+		INJECTED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml:4:5-67
+MERGED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] /Users/miggycalleja/.android/build-cache/d4433fa5ebe06f46eee4636889932a040af2e3b1/output/AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:20:5-66
+	android:name
+		ADDED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml:4:22-64
+application
+ADDED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml:6:5-19:19
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/miggycalleja/.android/build-cache/6e5c99484a5f046d65a999016f42f5f4255c671c/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /Users/miggycalleja/.android/build-cache/2f9c7b3afd1cfb2145f3777ca635bea67946af20/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /Users/miggycalleja/.android/build-cache/d298bfb4353419e326916cd930165e24b3ab02fd/output/AndroidManifest.xml:26:5-20
+MERGED from [com.google.firebase:firebase-core:10.0.1] /Users/miggycalleja/.android/build-cache/bd5066f2002fce7ad9eed4b33f21a1269e0924a6/output/AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:24:5-33:19
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] /Users/miggycalleja/.android/build-cache/d4433fa5ebe06f46eee4636889932a040af2e3b1/output/AndroidManifest.xml:24:5-28:19
+MERGED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:28:5-50:19
+MERGED from [com.google.firebase:firebase-common:10.0.1] /Users/miggycalleja/.android/build-cache/56dd4ea3e07b784c1d42d41210ab44b2403caedd/output/AndroidManifest.xml:4:5-7:19
+MERGED from [com.google.android.gms:play-services-tasks:10.0.1] /Users/miggycalleja/.android/build-cache/d535d63b6c35655dfbf9de47b51004327c703d69/output/AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-basement:10.0.1] /Users/miggycalleja/.android/build-cache/bf22921a6969ef6a3af9b31f3bef2b6a0ddeadcd/output/AndroidManifest.xml:19:5-21:19
+MERGED from [com.android.support:support-v4:25.3.1] /Users/miggycalleja/.android/build-cache/41029309a88291c9527e23eecd0f04481ae7c5c3/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] /Users/miggycalleja/.android/build-cache/a6e9f6c81c2ce3a7a25a511c97401b4626f3ebbd/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/miggycalleja/.android/build-cache/93536326602481f79a7d225cb2e736a0c2cec709/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] /Users/miggycalleja/.android/build-cache/ffcf70e0ac3393906aa29898a3fe027995697c31/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] /Users/miggycalleja/.android/build-cache/c094d71952e0e51bce0dae12a0a47470976ce48f/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:25.3.1] /Users/miggycalleja/.android/build-cache/b06d3f96143fc7c52493c8169ec3a23e340437f0/output/AndroidManifest.xml:29:5-20
+	android:label
+		ADDED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml:9:9-41
+	android:supportsRtl
+		ADDED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml:10:9-35
+	android:allowBackup
+		ADDED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml:7:9-35
+	android:icon
+		ADDED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml:8:9-43
+	android:theme
+		ADDED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml:11:9-40
+activity#com.example.nimira.ezrecipe.MainActivity
+ADDED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml:12:9-18:20
+	android:name
+		ADDED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml:12:19-47
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml:16:27-74
+uses-sdk
+INJECTED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/miggycalleja/.android/build-cache/6e5c99484a5f046d65a999016f42f5f4255c671c/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /Users/miggycalleja/.android/build-cache/2f9c7b3afd1cfb2145f3777ca635bea67946af20/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /Users/miggycalleja/.android/build-cache/d298bfb4353419e326916cd930165e24b3ab02fd/output/AndroidManifest.xml:20:5-43
+MERGED from [com.google.firebase:firebase-core:10.0.1] /Users/miggycalleja/.android/build-cache/bd5066f2002fce7ad9eed4b33f21a1269e0924a6/output/AndroidManifest.xml:4:5-42
+MERGED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] /Users/miggycalleja/.android/build-cache/d4433fa5ebe06f46eee4636889932a040af2e3b1/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:17:5-42
+MERGED from [com.google.firebase:firebase-common:10.0.1] /Users/miggycalleja/.android/build-cache/56dd4ea3e07b784c1d42d41210ab44b2403caedd/output/AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-tasks:10.0.1] /Users/miggycalleja/.android/build-cache/d535d63b6c35655dfbf9de47b51004327c703d69/output/AndroidManifest.xml:3:5-42
+MERGED from [com.google.android.gms:play-services-basement:10.0.1] /Users/miggycalleja/.android/build-cache/bf22921a6969ef6a3af9b31f3bef2b6a0ddeadcd/output/AndroidManifest.xml:17:5-42
+MERGED from [com.android.support:support-v4:25.3.1] /Users/miggycalleja/.android/build-cache/41029309a88291c9527e23eecd0f04481ae7c5c3/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] /Users/miggycalleja/.android/build-cache/a6e9f6c81c2ce3a7a25a511c97401b4626f3ebbd/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/miggycalleja/.android/build-cache/93536326602481f79a7d225cb2e736a0c2cec709/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.3.1] /Users/miggycalleja/.android/build-cache/ffcf70e0ac3393906aa29898a3fe027995697c31/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.3.1] /Users/miggycalleja/.android/build-cache/c094d71952e0e51bce0dae12a0a47470976ce48f/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.3.1] /Users/miggycalleja/.android/build-cache/b06d3f96143fc7c52493c8169ec3a23e340437f0/output/AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:25.3.1] /Users/miggycalleja/.android/build-cache/6e5c99484a5f046d65a999016f42f5f4255c671c/output/AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/src/main/AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:appcompat-v7:25.3.1] /Users/miggycalleja/.android/build-cache/6e5c99484a5f046d65a999016f42f5f4255c671c/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /Users/miggycalleja/.android/build-cache/2f9c7b3afd1cfb2145f3777ca635bea67946af20/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /Users/miggycalleja/.android/build-cache/d298bfb4353419e326916cd930165e24b3ab02fd/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-v4:25.3.1] /Users/miggycalleja/.android/build-cache/41029309a88291c9527e23eecd0f04481ae7c5c3/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] /Users/miggycalleja/.android/build-cache/a6e9f6c81c2ce3a7a25a511c97401b4626f3ebbd/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/miggycalleja/.android/build-cache/93536326602481f79a7d225cb2e736a0c2cec709/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.1] /Users/miggycalleja/.android/build-cache/ffcf70e0ac3393906aa29898a3fe027995697c31/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] /Users/miggycalleja/.android/build-cache/c094d71952e0e51bce0dae12a0a47470976ce48f/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-compat:25.3.1] /Users/miggycalleja/.android/build-cache/b06d3f96143fc7c52493c8169ec3a23e340437f0/output/AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:appcompat-v7:25.3.1] /Users/miggycalleja/.android/build-cache/6e5c99484a5f046d65a999016f42f5f4255c671c/output/AndroidManifest.xml:27:9-31
+	android:name
+		ADDED from [com.android.support:appcompat-v7:25.3.1] /Users/miggycalleja/.android/build-cache/6e5c99484a5f046d65a999016f42f5f4255c671c/output/AndroidManifest.xml:26:9-47
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] /Users/miggycalleja/.android/build-cache/d4433fa5ebe06f46eee4636889932a040af2e3b1/output/AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:19:5-78
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:21:22-76
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] /Users/miggycalleja/.android/build-cache/d4433fa5ebe06f46eee4636889932a040af2e3b1/output/AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:21:5-67
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:22:22-65
+receiver#com.google.android.gms.measurement.AppMeasurementReceiver
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:25:7-26:18
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] /Users/miggycalleja/.android/build-cache/d4433fa5ebe06f46eee4636889932a040af2e3b1/output/AndroidManifest.xml:25:7-26:18
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:25:90-112
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:25:113-137
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:25:17-89
+receiver#com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:27:7-31:18
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:27:162-184
+	android:permission
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:27:105-161
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:27:17-104
+intent-filter#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:28:11-30:27
+action#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:29:15-76
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:29:23-74
+service#com.google.android.gms.measurement.AppMeasurementService
+ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:32:7-137
+MERGED from [com.google.firebase:firebase-analytics-impl:10.0.1] /Users/miggycalleja/.android/build-cache/d4433fa5ebe06f46eee4636889932a040af2e3b1/output/AndroidManifest.xml:27:7-137
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:32:88-110
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:32:111-135
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.0.1] /Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/AndroidManifest.xml:32:16-87
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:22:5-81
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:22:22-79
+permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:24:5-109
+	android:protectionLevel
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:24:72-107
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:24:17-71
+uses-permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:26:5-78
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:26:22-76
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:30:9-36:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:30:85-108
+	android:permission
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:30:109-169
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:30:19-84
+intent-filter#${applicationId}+com.google.android.c2dm.intent.RECEIVE+com.google.android.c2dm.intent.REGISTRATION
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:31:13-35:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:32:17-80
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:32:25-78
+action#com.google.android.c2dm.intent.REGISTRATION
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:33:17-85
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:33:25-83
+category#${applicationId}
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:34:17-60
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:34:27-58
+receiver#com.google.firebase.iid.FirebaseInstanceIdInternalReceiver
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:40:9-119
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:40:93-117
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:40:19-92
+service#com.google.firebase.iid.FirebaseInstanceIdService
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:44:9-48:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:44:83-106
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:44:18-82
+intent-filter#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:45:13-47:29
+	android:priority
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:45:28-51
+action#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:46:17-79
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.0.1] /Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/AndroidManifest.xml:46:25-77
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:10.0.1] /Users/miggycalleja/.android/build-cache/56dd4ea3e07b784c1d42d41210ab44b2403caedd/output/AndroidManifest.xml:6:9-194
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:10.0.1] /Users/miggycalleja/.android/build-cache/56dd4ea3e07b784c1d42d41210ab44b2403caedd/output/AndroidManifest.xml:6:19-78
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:10.0.1] /Users/miggycalleja/.android/build-cache/56dd4ea3e07b784c1d42d41210ab44b2403caedd/output/AndroidManifest.xml:6:144-168
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:10.0.1] /Users/miggycalleja/.android/build-cache/56dd4ea3e07b784c1d42d41210ab44b2403caedd/output/AndroidManifest.xml:6:169-192
+	android:name
+		ADDED from [com.google.firebase:firebase-common:10.0.1] /Users/miggycalleja/.android/build-cache/56dd4ea3e07b784c1d42d41210ab44b2403caedd/output/AndroidManifest.xml:6:79-143
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:10.0.1] /Users/miggycalleja/.android/build-cache/bf22921a6969ef6a3af9b31f3bef2b6a0ddeadcd/output/AndroidManifest.xml:20:9-121
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:10.0.1] /Users/miggycalleja/.android/build-cache/bf22921a6969ef6a3af9b31f3bef2b6a0ddeadcd/output/AndroidManifest.xml:20:66-119
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:10.0.1] /Users/miggycalleja/.android/build-cache/bf22921a6969ef6a3af9b31f3bef2b6a0ddeadcd/output/AndroidManifest.xml:20:20-65

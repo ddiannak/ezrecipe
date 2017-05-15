@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/miggycalleja/.android/build-cache/d4433fa5ebe06f46eee4636889932a040af2e3b1/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6116e0e7069de7fc259aac8e08b84f32c2038231">
+        <dex dex="/Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c15b64f019dffecb0bc3ca2d6a14238f361e5d49/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/miggycalleja/.android/build-cache/d535d63b6c35655dfbf9de47b51004327c703d69/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6addaba208e21c6da776d0ca75b6b23a6ccd5499">
+        <dex dex="/Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_15031384998632c428edee75578d68abc8e0d4ff/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="f8e33e7a89ed4e98b1667b45478dd9bbf9899513">
+        <dex dex="/Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_ce80287ef5cff32581491736f0131a8766ff2c91/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/miggycalleja/.android/build-cache/bf22921a6969ef6a3af9b31f3bef2b6a0ddeadcd/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="756f6297eef79784f5e356dcd4f39865028b2bd0">
+        <dex dex="/Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_93bbe47becdc07ff86c6249755c128be9439083a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/miggycalleja/.android/build-cache/c996364114455ab09220e6280dcd59e11f1c02d2/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="486371f97baad8e607f332f20fee1d3dd00a731a">
+        <dex dex="/Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5629b1bb675300b3bd81c1d4fd86bb69423f001e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/libs/unirest-java-1.3.2-SNAPSHOT-withDependency-ShadedForAndroid.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="747b56e93d254ed9eb63f4dd48a977fda75f4ec1">
+        <dex dex="/Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/2/unirest-java-1.3.2-SNAPSHOT-withDependency-ShadedForAndroid_778557b2ca20bba8b7f1eebdf5957015b52c4ffd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="/Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_05b0fbf65ef1bb959cd6288e064ac33104954c40/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/miggycalleja/.android/build-cache/56dd4ea3e07b784c1d42d41210ab44b2403caedd/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="eb0d830e3eabb9deb9ec44869cf7ac7ea1ad794c">
+        <dex dex="/Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_de63496a8cd57a9a1b8367fbe8193d41c08383d8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/miggycalleja/.android/build-cache/4dec6f123dde539bbe2fbddfa27b882a2261e4a7/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="433f4d6aa5f21f19552afe0e6c5eff0fedba73ad">
+        <dex dex="/Users/miggycalleja/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7c45aaf5041811b109e471bcda38a03fca6c6fbd/classes.dex" />
+    </item>
+
+</items>
