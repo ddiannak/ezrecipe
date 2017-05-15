@@ -25,12 +25,10 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> checkedIngredients = new ArrayList<String>();
     ArrayList<JSONObject> info = new ArrayList<JSONObject>();
     TextView text;
-<<<<<<< HEAD
 //    CheckBox chicken, beef, rice;
-=======
+
     TextView test;
     CheckBox chicken, beef, rice;
->>>>>>> 301426c9e8a96429c78bf532f1182c870c9f1db5
     Button ingredients;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,4 +174,4 @@ public class MainActivity extends AppCompatActivity {
 //                text.setText(answer);
         }
     }
-}
+}}
