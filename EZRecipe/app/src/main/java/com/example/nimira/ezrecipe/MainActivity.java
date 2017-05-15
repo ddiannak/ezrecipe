@@ -22,7 +22,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<String> checkedIngredients = new ArrayList<String>();
+    ArrayList<String> selection = new ArrayList<String>();
     ArrayList<JSONObject> info = new ArrayList<JSONObject>();
     TextView text;
 //    CheckBox chicken, beef, rice;
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void selectItems(View v) {
         ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();
-//        ArrayList<String> checkedIngredients = new ArrayList<String>();
+        ArrayList<String> checkedIngredients = new ArrayList<String>();
         checkBoxes = getCheckBoxes();
         boolean checked = ((CheckBox) v).isChecked();
 
@@ -90,8 +90,10 @@ public class MainActivity extends AppCompatActivity {
                 checkedIngredients.remove(checkBoxes.get(i).getText().toString());
             }
         }
-        Log.i("List:", checkedIngredients.toString());
+        Log.i("Checked Ingredients", checkedIngredients.toString());
+        selection = checkedIngredients;
     }
+
 
 //    public void selectItems(View v){
 //        boolean checked = ((CheckBox) v).isChecked();
@@ -132,8 +134,8 @@ public class MainActivity extends AppCompatActivity {
 
         protected HttpResponse<JsonNode> doInBackground(String... msg) {
             String items = "";
-            for (int i=0; i<checkedIngredients.size(); i++){
-                items = items + "" + checkedIngredients.get(i) + "%2C";
+            for (int i=0; i<selection.size(); i++){
+                items = items + "" + selection.get(i) + "%2C";
             }
             String url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients="+items+ "&limitLicense=false&number=5&ranking=1";
             Log.i("url: ", url);
@@ -145,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                         .header("Accept", "application/json")
                         .asJson();
                 Log.i("request", "" + request);
-                Log.i("List ", checkedIngredients.toString());
+                Log.i("Selection Array ", selection.toString());
             } catch (UnirestException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
