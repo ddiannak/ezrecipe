@@ -1,5 +1,6 @@
 package com.example.nimira.ezrecipe;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,13 +22,13 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+
 public class MainActivity extends AppCompatActivity {
-    ArrayList<String> checkedIngredients = new ArrayList<String>();
+    ArrayList<String> selection = new ArrayList<String>();
     ArrayList<JSONObject> info = new ArrayList<JSONObject>();
     TextView text;
-//    CheckBox chicken, beef, rice;
 
-    TextView test;
+//    TextView test;
     CheckBox chicken, beef, rice;
     Button ingredients;
     @Override
@@ -35,28 +36,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         String items="";
-//        chicken = (CheckBox) findViewById(chicken);
-//        beef = (CheckBox) findViewById(beef);
-//        rice = (CheckBox) findViewById(rice);
         text = (TextView)findViewById(R.id.chickenTest);
-        test = (TextView) findViewById(R.id.textView);
+//        test = (TextView) findViewById(R.id.textView);
         ingredients = (Button)findViewById(R.id.ingredients);
         ingredients.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new CallMashapeAsync().execute();
+                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                intent.putExtra("foodID", text.getText().toString());
+                startActivity(intent);
+
             }
         });
     }
 
-//    public void getIngredients(View v){
-////        String final_selections = "";
-////        for (String Selections : selection){
-////            final_selections = final_selections + Selections + "\n";
-////        }
-////        text.setText(final_selections);
-
-//    }
 
     public ArrayList<CheckBox> getCheckBoxes(){
         ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();
@@ -64,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         findCheckBoxes(viewGroup, checkBoxes);
         return checkBoxes;
     }
+
 
     private static void findCheckBoxes(ViewGroup viewGroup, ArrayList<CheckBox> checkBoxes) {
         for (int i=0, N = viewGroup.getChildCount(); i<N; i++){
@@ -78,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void selectItems(View v) {
         ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();
-//        ArrayList<String> checkedIngredients = new ArrayList<String>();
+        ArrayList<String> checkedIngredients = new ArrayList<String>();
         checkBoxes = getCheckBoxes();
         boolean checked = ((CheckBox) v).isChecked();
 
@@ -90,50 +85,16 @@ public class MainActivity extends AppCompatActivity {
                 checkedIngredients.remove(checkBoxes.get(i).getText().toString());
             }
         }
-        Log.i("List:", checkedIngredients.toString());
+        Log.i("List", checkedIngredients.toString());
+        selection = checkedIngredients;
     }
-
-//    public void selectItems(View v){
-//        boolean checked = ((CheckBox) v).isChecked();
-//        String words;
-//        switch (v.getId()) {
-//            case R.id.chicken:
-//                words = chicken.getText().toString();
-//                if (checked) {
-//                    selection.add(words);
-//                } else {
-//                    selection.remove(words);
-//                }
-//                break;
-//            case R.id.beef:
-//                words = beef.getText().toString();
-//                if (checked){
-//                    selection.add(words);
-//                }
-//                else{
-//                    selection.remove(words);
-//                }
-//                break;
-//            case R.id.rice:
-//                words = rice.getText().toString();
-//                if (checked){
-//                    selection.add(words);
-//                }
-//                else{
-//                    selection.remove(words);
-//                }
-//                break;
-//        }
-//        Log.i("List: ", selection.toString());
-//        Log.i("info", "" + info.toString());
-//    }
 
     private class CallMashapeAsync extends AsyncTask<String, Integer, HttpResponse<JsonNode>> {
 
         protected HttpResponse<JsonNode> doInBackground(String... msg) {
             String items = "";
-            for (int i=0; i<checkedIngredients.size(); i++){
-                items = items + "" + checkedIngredients.get(i) + "%2C";
+            for (int i=0; i<selection.size(); i++){
+                items = items + "" + selection.get(i) + "%2C";
             }
             String url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients="+items+ "&limitLicense=false&number=5&ranking=1";
             Log.i("url: ", url);
@@ -145,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
                         .header("Accept", "application/json")
                         .asJson();
                 Log.i("request", "" + request);
-                Log.i("List ", checkedIngredients.toString());
             } catch (UnirestException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -153,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
             return request;
         }
+
 
         protected void onProgressUpdate(Integer...integers) {
         }
