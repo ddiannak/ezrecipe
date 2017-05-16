@@ -11,90 +11,231 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.nimira.ezrecipe.MainActivity">
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/chickenTest"
-        android:layout_below="@+id/ingredients"
-        android:layout_marginTop="20dp"
-        android:layout_toRightOf="@+id/beef"
-        android:layout_alignRight="@+id/rice"
-        android:layout_alignEnd="@+id/rice" />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <CheckBox
-        android:text="rice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rice"
-        android:onClick="selectItems"
-        android:layout_alignBaseline="@+id/chicken"
-        android:layout_alignBottom="@+id/chicken"
-        android:layout_toRightOf="@+id/ingredients"
-        android:layout_toEndOf="@+id/ingredients" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_height="300dp">
 
-    <CheckBox
-        android:text="beef"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="47dp"
-        android:id="@+id/beef"
-        android:onClick="selectItems"
-        android:layout_below="@+id/rice"
-        android:layout_alignLeft="@+id/chicken"
-        android:layout_alignStart="@+id/chicken" />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:fillViewport="false"
+                android:scrollbarStyle="insideOverlay"
+                android:visibility="visible">
 
-    <CheckBox
-        android:text="bread"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/beef"
-        android:layout_alignLeft="@+id/rice"
-        android:layout_alignStart="@+id/rice"
-        android:id="@+id/bread"
-        android:onClick="selectItems" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-    <CheckBox
-        android:text="pork"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/pork"
-        android:onClick="selectItems"
-        android:layout_marginTop="38dp"
-        android:layout_below="@+id/beef"
-        android:layout_alignLeft="@+id/beef"
-        android:layout_alignStart="@+id/beef" />
+                    <CheckBox
+                        android:id="@+id/checkBox11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="CheckBox" />
 
-    <Button
-        android:text="Test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ingredients"
-        android:layout_below="@+id/pork"
-        android:layout_toRightOf="@+id/chicken"
-        android:layout_toEndOf="@+id/chicken"
-        android:layout_marginTop="32dp" />
+                    <CheckBox
+                        android:id="@+id/checkBox13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="CheckBox" />
 
-    <CheckBox
-        android:text="chicken"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/chicken"
-        android:onClick="selectItems"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp" />
+                    <CheckBox
+                        android:id="@+id/checkBox12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="CheckBox" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/beef"
-        android:layout_marginTop="20dp"
-        android:text="TextView" />
+                    <CheckBox
+                        android:id="@+id/checkBox14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="CheckBox" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="CheckBox" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="CheckBox" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="CheckBox" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="CheckBox" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox18"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="CheckBox" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox17"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="CheckBox" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="CheckBox" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox15"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="CheckBox" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="garlic" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignLeft="@+id/chicken"
+                        android:layout_alignStart="@+id/chicken"
+                        android:layout_below="@+id/rice"
+                        android:layout_weight="1"
+                        android:onClick="selectItems"
+                        android:text="beef" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
+                        android:onClick="selectItems"
+                        android:text="chicken" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/rice"
+                        android:layout_alignStart="@+id/rice"
+                        android:layout_alignTop="@+id/beef"
+                        android:layout_weight="1"
+                        android:onClick="selectItems"
+                        android:text="bread" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/chicken"
+                        android:layout_alignBottom="@+id/chicken"
+                        android:layout_toEndOf="@+id/ingredients"
+                        android:layout_toRightOf="@+id/ingredients"
+                        android:layout_weight="1"
+                        android:onClick="selectItems"
+                        android:text="rice" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/beef"
+                        android:layout_alignStart="@+id/beef"
+                        android:layout_below="@+id/beef"
+                        android:layout_weight="1"
+                        android:onClick="selectItems"
+                        android:text="pork" />
+                </LinearLayout>
+            </ScrollView>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/chickenTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/ingredients"
+                android:layout_weight="1"
+                android:text="Recipe ID" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/chickenTest"
+                android:layout_weight="1"
+                android:text="Failure" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tableRow"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/ingredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tableRow"
+                android:layout_marginTop="0dp"
+                android:layout_weight="1"
+                android:text="Test" />
+
+        </TableRow>
+
+    </TableLayout>
 
 </RelativeLayout>
