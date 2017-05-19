@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-et/values-et.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 105,
+                    "endColumn": 198,
+                    "endOffset": 299
+                },
+                "from": {
+                    "file": "/Users/Brian/.android/build-cache/5f96101e17079bd702336d770c6ac33bf1999ec7/output/res/values-et/values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 0,
+                        "startOffset": 285,
+                        "endColumn": 198,
+                        "endOffset": 483
+                    }
+                }
+            }
+        ]
+    }
+]

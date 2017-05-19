@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
+        "source": "/Users/Brian/.android/build-cache/978dc6a40d2e317202b1e537128dce9a5e7987f2/output/res/anim/abc_popup_exit.xml"
+    },
+    {
+        "merged": "/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/Users/Brian/.android/build-cache/978dc6a40d2e317202b1e537128dce9a5e7987f2/output/res/anim/abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
+        "source": "/Users/Brian/.android/build-cache/978dc6a40d2e317202b1e537128dce9a5e7987f2/output/res/anim/abc_slide_out_top.xml"
+    },
+    {
+        "merged": "/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
+        "source": "/Users/Brian/.android/build-cache/978dc6a40d2e317202b1e537128dce9a5e7987f2/output/res/anim/abc_fade_in.xml"
+    },
+    {
+        "merged": "/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/Users/Brian/.android/build-cache/978dc6a40d2e317202b1e537128dce9a5e7987f2/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
+        "source": "/Users/Brian/.android/build-cache/978dc6a40d2e317202b1e537128dce9a5e7987f2/output/res/anim/abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/Users/Brian/.android/build-cache/978dc6a40d2e317202b1e537128dce9a5e7987f2/output/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
+        "source": "/Users/Brian/.android/build-cache/978dc6a40d2e317202b1e537128dce9a5e7987f2/output/res/anim/abc_fade_out.xml"
+    },
+    {
+        "merged": "/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
+        "source": "/Users/Brian/.android/build-cache/978dc6a40d2e317202b1e537128dce9a5e7987f2/output/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
+        "source": "/Users/Brian/.android/build-cache/978dc6a40d2e317202b1e537128dce9a5e7987f2/output/res/anim/abc_popup_enter.xml"
+    }
+]

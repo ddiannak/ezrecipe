@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.nimira.ezrecipe.MainActivity">
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chickenTest"
+        android:layout_below="@+id/ingredients"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/beef"
+        android:layout_alignRight="@+id/rice"
+        android:layout_alignEnd="@+id/rice" />
+
+    <CheckBox
+        android:text="rice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rice"
+        android:onClick="selectItems"
+        android:layout_alignBaseline="@+id/chicken"
+        android:layout_alignBottom="@+id/chicken"
+        android:layout_toRightOf="@+id/ingredients"
+        android:layout_toEndOf="@+id/ingredients" />
+
+    <CheckBox
+        android:text="beef"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="47dp"
+        android:id="@+id/beef"
+        android:onClick="selectItems"
+        android:layout_below="@+id/rice"
+        android:layout_alignLeft="@+id/chicken"
+        android:layout_alignStart="@+id/chicken" />
+
+    <CheckBox
+        android:text="bread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/beef"
+        android:layout_alignLeft="@+id/rice"
+        android:layout_alignStart="@+id/rice"
+        android:id="@+id/bread"
+        android:onClick="selectItems" />
+
+    <CheckBox
+        android:text="pork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pork"
+        android:onClick="selectItems"
+        android:layout_marginTop="38dp"
+        android:layout_below="@+id/beef"
+        android:layout_alignLeft="@+id/beef"
+        android:layout_alignStart="@+id/beef" />
+
+    <Button
+        android:text="Test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ingredients"
+        android:layout_below="@+id/pork"
+        android:layout_toRightOf="@+id/chicken"
+        android:layout_toEndOf="@+id/chicken"
+        android:layout_marginTop="32dp" />
+
+    <CheckBox
+        android:text="chicken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chicken"
+        android:onClick="selectItems"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp" />
+
+</RelativeLayout>

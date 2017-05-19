@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">225171723459-ha7b8rd64mbufel02kfuhsr75id7qvb5.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://auth-dad3d.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">225171723459</string>
+    <string name="google_api_key" translatable="false">AIzaSyD5rT0XqL0Cuxt0VtVCW4EJxgw0zQcdLCs</string>
+    <string name="google_app_id" translatable="false">1:225171723459:android:cbd861d51d73be66</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyD5rT0XqL0Cuxt0VtVCW4EJxgw0zQcdLCs</string>
+    <string name="google_storage_bucket" translatable="false">auth-dad3d.appspot.com</string>
+</resources>

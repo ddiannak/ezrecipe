@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/Brian/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.2_bb2e0e7b960fca67a0c20efca5eb8f80c648a480/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Brian/Desktop/ezrecipe/EZRecipe/app/libs/unirest-java-1.3.2-SNAPSHOT-withDependency-ShadedForAndroid.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="747b56e93d254ed9eb63f4dd48a977fda75f4ec1">
+        <dex dex="/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/2/unirest-java-1.3.2-SNAPSHOT-withDependency-ShadedForAndroid_3473cbdca9372845a807573f42f1f1bf22b5b990/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Brian/.android/build-cache/4c34ecf10976da17402f7d164e895c5aa748b20d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_6cc25076f95f8c3614920e3e2d66826649ec1694/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="9b98e21eabdadcc7f7aef2b878fc2e34000f434a">
+        <dex dex="/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_9808e4cb643b5b231c0ef3e8fcfca7a0a976eae3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_dad3737dd5467419ae340f244b8683d6f3c0c649/classes.dex" />
+    </item>
+
+</items>
