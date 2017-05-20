@@ -1,4 +1,0 @@
-#Thu May 18 18:07:21 PDT 2017
-base.0=/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_8
-renamed.0=classes.dex
-file.0=/Users/Brian/Desktop/ezrecipe/EZRecipe/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_8/classes.dex
