@@ -21,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -42,11 +43,16 @@ public class MainActivity extends AppCompatActivity {
         ingredients.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new CallMashapeAsync().execute();
+                try {
+                    HttpResponse<JsonNode> response = new CallMashapeAsync().execute().get();
                 Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-                intent.putExtra("foodID", text.getText().toString());
+                intent.putExtra("foodID", response.toString());
                 startActivity(intent);
-
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -119,20 +125,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(HttpResponse<JsonNode> response) {
-            String answer = response.getBody().toString();
-//            TextView txtView = (TextView) findViewById(R.id.textView1);
-            try {
-                // JSONObject root = new JSONObject(answer);
-                JSONArray root = new JSONArray(answer);
-                // JSONArray recipe_name = root.getJSONArray(0);
-                JSONObject id_num = root.getJSONObject(0);
-                int id = id_num.getInt("id");
-                String idstr = id_num.getString("id");
-                text.setText(idstr);
-            }
-            catch (JSONException e) {
-                text.setText("failed: make sure you are getting the right type");
-//                text.setText(answer);
+//            String answer = response.getBody().toString();
+////            TextView txtView = (TextView) findViewById(R.id.textView1);
+//            try {
+//                // JSONObject root = new JSONObject(answer);
+//                JSONArray root = new JSONArray(answer);
+//                // JSONArray recipe_name = root.getJSONArray(0);
+//                JSONObject id_num = root.getJSONObject(0);
+//                int id = id_num.getInt("id");
+//                String idstr = id_num.getString("id");
+//                text.setText(idstr);
+//            }
+//            catch (JSONException e) {
+//                text.setText("failed: make sure you are getting the right type");
+////                text.setText(answer);
         }
     }
-}}
+}

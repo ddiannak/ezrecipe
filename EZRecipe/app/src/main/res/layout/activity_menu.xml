@@ -10,7 +10,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.nimira.ezrecipe.MenuActivity">
+    tools:context="com.example.nimira.ezrecipe.MenuActivity"
+    android:weightSum="1">
 
     <TextView
         android:id="@+id/secondPage"
@@ -18,4 +19,5 @@
         android:layout_height="49dp"
         android:layout_marginTop="20dp"
         android:text="secondPage" />
+
 </LinearLayout>

@@ -30,6 +30,7 @@ public class MenuActivity extends Activity {
         String value = intent.getStringExtra("foodID");
         TextView text = (TextView)findViewById(R.id.secondPage);
         text.setText(value);
+        text.setText(value);
 
     }
 
