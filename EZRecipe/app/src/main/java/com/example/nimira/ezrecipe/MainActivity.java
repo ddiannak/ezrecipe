@@ -18,7 +18,6 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -26,7 +25,9 @@ import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<String> selection = new ArrayList<String>();
-    ArrayList<JSONObject> info = new ArrayList<JSONObject>();
+    ArrayList<String> recipeIDs = new ArrayList<>();
+    ArrayList<String> recipeNames = new ArrayList<>();
+
     TextView text;
 
 //    TextView test;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         String items="";
-        text = (TextView)findViewById(R.id.chickenTest);
+//        text = (TextView)findViewById(R.id.chickenTest);
 //        test = (TextView) findViewById(R.id.textView);
         ingredients = (Button)findViewById(R.id.ingredients);
         ingredients.setOnClickListener( new View.OnClickListener() {
@@ -45,14 +46,26 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     HttpResponse<JsonNode> response = new CallMashapeAsync().execute().get();
-                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-                intent.putExtra("foodID", response.toString());
-                startActivity(intent);
+                    String data = response.getBody().toString();
+                    Log.i("data", data);
+                    JSONArray root = new JSONArray(data);
+                    for (int i=0; i<root.length(); i++){
+                        recipeIDs.add(root.getJSONObject(i).getString("id"));
+                        recipeNames.add(root.getJSONObject(i).getString("title"));
+                    }
+                    Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                    intent.putExtra("recipeIDs", recipeIDs);
+                    intent.putExtra("recipeNames", recipeNames);
+                    startActivity(intent);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
                     e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+                recipeIDs.clear();
+                recipeNames.clear();
             }
         });
     }
@@ -84,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         boolean checked = ((CheckBox) v).isChecked();
 
         String words;
+        Log.i("size of checkboxes", ""+checkBoxes.size());
         for (int i = 0; i < checkBoxes.size(); i++) {
             if (checkBoxes.get(i).isChecked()) {
                 checkedIngredients.add(checkBoxes.get(i).getText().toString());
@@ -102,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
             for (int i=0; i<selection.size(); i++){
                 items = items + "" + selection.get(i) + "%2C";
             }
-            String url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients="+items+ "&limitLicense=false&number=5&ranking=1";
+            String url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients="+items+ "&limitLicense=false&number=10&ranking=1";
             Log.i("url: ", url);
             HttpResponse<JsonNode> request = null;
             try {
