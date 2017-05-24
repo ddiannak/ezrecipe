@@ -25,9 +25,11 @@ import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<String> selection = new ArrayList<String>();
+
     ArrayList<String> recipeIDs = new ArrayList<>();
     ArrayList<String> recipeNames = new ArrayList<>();
 
+    ArrayList<JSONObject> info = new ArrayList<JSONObject>();
     TextView text;
 
 //    TextView test;
@@ -105,9 +107,46 @@ public class MainActivity extends AppCompatActivity {
                 checkedIngredients.remove(checkBoxes.get(i).getText().toString());
             }
         }
-        Log.i("List", checkedIngredients.toString());
+        Log.i("Checked Ingredients", checkedIngredients.toString());
         selection = checkedIngredients;
     }
+
+
+//    public void selectItems(View v){
+//        boolean checked = ((CheckBox) v).isChecked();
+//        String words;
+//        switch (v.getId()) {
+//            case R.id.chicken:
+//                words = chicken.getText().toString();
+//                if (checked) {
+//                    selection.add(words);
+//                } else {
+//                    selection.remove(words);
+//                }
+//                break;
+//            case R.id.beef:
+//                words = beef.getText().toString();
+//                if (checked){
+//                    selection.add(words);
+//                }
+//                else{
+//                    selection.remove(words);
+//                }
+//                break;
+//            case R.id.rice:
+//                words = rice.getText().toString();
+//                if (checked){
+//                    selection.add(words);
+//                }
+//                else{
+//                    selection.remove(words);
+//                }
+//                break;
+//        }
+//        Log.i("List: ", selection.toString());
+//        Log.i("info", "" + info.toString());
+//    }
+
 
     private class CallMashapeAsync extends AsyncTask<String, Integer, HttpResponse<JsonNode>> {
 
@@ -126,6 +165,10 @@ public class MainActivity extends AppCompatActivity {
                         .header("Accept", "application/json")
                         .asJson();
                 Log.i("request", "" + request);
+
+
+                Log.i("Selection Array ", selection.toString());
+
             } catch (UnirestException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
