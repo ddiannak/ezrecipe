@@ -18,6 +18,6 @@
         </activity>
 
         <activity android:name=".MenuActivity"/>
-
+        <activity android:name=".MenuLogin"/>
     </application>
 </manifest>

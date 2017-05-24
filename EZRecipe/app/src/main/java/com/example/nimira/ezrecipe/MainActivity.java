@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 //    TextView test;
     CheckBox chicken, beef, rice;
     Button ingredients;
+    Button login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,8 +69,19 @@ public class MainActivity extends AppCompatActivity {
                 recipeNames.clear();
             }
         });
-    }
+    //Button for user log in ans sign up.
+        login = (Button)findViewById(R.id.login);
+        login.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                    Intent intent = new Intent(MainActivity.this, MenuLogin.class);
+                    startActivity(intent);
+            }
+
+        });
+
+    }
 
     public ArrayList<CheckBox> getCheckBoxes(){
         ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();
