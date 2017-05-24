@@ -24,10 +24,10 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     ArrayList<String> checkedIngredients = new ArrayList<String>();
     ArrayList<JSONObject> info = new ArrayList<JSONObject>();
-    TextView text;
+    TextView jsontext;
 //    CheckBox chicken, beef, rice;
 
-    TextView test;
+    TextView idtest;
     CheckBox chicken, beef, rice;
     Button ingredients;
     @Override
@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
 //        chicken = (CheckBox) findViewById(chicken);
 //        beef = (CheckBox) findViewById(beef);
 //        rice = (CheckBox) findViewById(rice);
-        text = (TextView)findViewById(R.id.chickenTest);
-        test = (TextView) findViewById(R.id.textView);
+        jsontext = (TextView)findViewById(R.id.chickenTest);
+        idtest = (TextView) findViewById(R.id.textView);
         ingredients = (Button)findViewById(R.id.ingredients);
         ingredients.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -162,15 +162,25 @@ public class MainActivity extends AppCompatActivity {
 //            TextView txtView = (TextView) findViewById(R.id.textView1);
             try {
                 // JSONObject root = new JSONObject(answer);
+                ArrayList<String> ids = new ArrayList();
+                String str_ids = "";
                 JSONArray root = new JSONArray(answer);
                 // JSONArray recipe_name = root.getJSONArray(0);
-                JSONObject id_num = root.getJSONObject(0);
-                int id = id_num.getInt("id");
-                String idstr = id_num.getString("id");
-                text.setText(idstr);
+                for (int i = 0; i<5; i++) {
+                    JSONObject id_num = root.getJSONObject(i);
+                    int id = id_num.getInt("id");
+                    String idstr = id_num.getString("id");
+                    ids.add(idstr);
+                    str_ids += str_ids+"\n";
+
+                }
+                jsontext.setText(answer);
+                idtest.setText(str_ids);
+
+
             }
             catch (JSONException e) {
-                text.setText("failed: make sure you are getting the right type");
+                jsontext.setText("failed: make sure you are getting the right type");
 //                text.setText(answer);
         }
     }
