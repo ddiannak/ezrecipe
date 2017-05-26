@@ -16,10 +16,11 @@
         android:id="@+id/openrecipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="0dp"
-        android:text="open recipe"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:elevation="0dp"
+        tools:ignore="UnusedAttribute"
+        tools:text="open recipe" />
 
     <Spinner
         android:id="@+id/recipeDropdown"
@@ -37,6 +38,6 @@
         android:layout_below="@+id/openrecipe"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="69dp"
-        android:text="info" />
+        tools:text="info" />
 
 </RelativeLayout>
