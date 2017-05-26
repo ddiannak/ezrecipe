@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.TextView;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
@@ -27,20 +26,17 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> selection = new ArrayList<String>();
     ArrayList<String> recipeIDs = new ArrayList<>();
     ArrayList<String> recipeNames = new ArrayList<>();
-
-    TextView text;
-
-//    TextView test;
-    CheckBox chicken, beef, rice;
+    ArrayList<String> recipeImages = new ArrayList<>();
     Button ingredients;
+    boolean isSelected;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String items="";
-//        text = (TextView)findViewById(R.id.chickenTest);
-//        test = (TextView) findViewById(R.id.textView);
+
         ingredients = (Button)findViewById(R.id.ingredients);
+        isSelected = false;
         ingredients.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,10 +48,12 @@ public class MainActivity extends AppCompatActivity {
                     for (int i=0; i<root.length(); i++){
                         recipeIDs.add(root.getJSONObject(i).getString("id"));
                         recipeNames.add(root.getJSONObject(i).getString("title"));
+                        recipeImages.add(root.getJSONObject(i).getString("image"));
                     }
                     Intent intent = new Intent(MainActivity.this, MenuActivity.class);
                     intent.putExtra("recipeIDs", recipeIDs);
                     intent.putExtra("recipeNames", recipeNames);
+                    intent.putExtra("recipeImage", recipeImages);
                     startActivity(intent);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -66,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 recipeIDs.clear();
                 recipeNames.clear();
+                recipeImages.clear();
             }
         });
     }
@@ -97,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
         boolean checked = ((CheckBox) v).isChecked();
 
         String words;
-        Log.i("size of checkboxes", ""+checkBoxes.size());
         for (int i = 0; i < checkBoxes.size(); i++) {
             if (checkBoxes.get(i).isChecked()) {
                 checkedIngredients.add(checkBoxes.get(i).getText().toString());
@@ -125,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                         .header("X-Mashape-Key", "gNrvLXTPTNmshsXWUXLzm7VwvkJWp1m47mVjsn5eRbKVitWD4i")
                         .header("Accept", "application/json")
                         .asJson();
-                Log.i("request", "" + request);
+//                Log.i("request", "" + request);
             } catch (UnirestException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -139,20 +137,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(HttpResponse<JsonNode> response) {
-//            String answer = response.getBody().toString();
-////            TextView txtView = (TextView) findViewById(R.id.textView1);
-//            try {
-//                // JSONObject root = new JSONObject(answer);
-//                JSONArray root = new JSONArray(answer);
-//                // JSONArray recipe_name = root.getJSONArray(0);
-//                JSONObject id_num = root.getJSONObject(0);
-//                int id = id_num.getInt("id");
-//                String idstr = id_num.getString("id");
-//                text.setText(idstr);
-//            }
-//            catch (JSONException e) {
-//                text.setText("failed: make sure you are getting the right type");
-////                text.setText(answer);
+
         }
     }
 }
