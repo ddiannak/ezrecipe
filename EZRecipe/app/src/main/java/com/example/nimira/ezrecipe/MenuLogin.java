@@ -2,6 +2,7 @@ package com.example.nimira.ezrecipe;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -9,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-
+import android.util.Log;
 import java.util.ArrayList;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class MenuLogin extends Activity implements View.OnClickListener{
@@ -29,11 +31,19 @@ public class MenuLogin extends Activity implements View.OnClickListener{
     private EditText editTextEmail;
     private EditText editTextPassword;
     private Button buttonSignup;
+    private Button buttonSignIn;
     private ProgressDialog progressDialog;
 
 
     //defining firebaseauth object
     private FirebaseAuth firebaseAuth;
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update
+        FirebaseUser currentUser = firebaseAuth.getInstance().getCurrentUser();
+    }
 
 
     @Override
@@ -49,19 +59,68 @@ public class MenuLogin extends Activity implements View.OnClickListener{
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
 
         buttonSignup = (Button) findViewById(R.id.buttonSignup);
+        buttonSignIn = (Button) findViewById(R.id.buttonSignIn);
 
         progressDialog = new ProgressDialog(this);
 
         //attaching listener to button
         buttonSignup.setOnClickListener(this);
+        buttonSignIn.setOnClickListener(this);
+
+        /*
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // Name, email address, and profile photo Url
+            String name = user.getDisplayName();
+            String email = user.getEmail();
+            Uri photoUrl = user.getPhotoUrl();
+
+            // Check if user's email is verified
+            boolean emailVerified = user.isEmailVerified();
+
+            // The user's ID, unique to the Firebase project. Do NOT use this value to
+            // authenticate with your backend server, if you have one. Use
+            // FirebaseUser.getToken() instead.
+            String uid = user.getUid();
+        }*/
 
     }
     @Override
-    public void onClick(View view) {
-        //calling register method on click
-        registerUser();
-    };
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.buttonSignup:
+                //DO something
+                registerUser();
+                break;
+            case R.id.buttonSignIn:
+                //DO something
+                signIn();
+                break;
+        }
+    }
 
+
+    private void signIn(){
+        String email = editTextEmail.getText().toString().trim();
+        String password  = editTextPassword.getText().toString().trim();
+        firebaseAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                            Toast.makeText(getApplicationContext(), "Sign in Success", Toast.LENGTH_SHORT).show();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w("signInWithEmail:failure", task.getException());
+                            //display in short period of time
+                            Toast.makeText(getApplicationContext(), "Sign in failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+        return;
+    }
     private void registerUser(){
 
         //getting email and password from edit texts
