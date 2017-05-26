@@ -111,6 +111,8 @@ public class MenuLogin extends Activity implements View.OnClickListener{
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             Toast.makeText(getApplicationContext(), "Sign in Success", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(MenuLogin.this, MainActivity.class);
+                            startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("signInWithEmail:failure", task.getException());
