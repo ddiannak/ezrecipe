@@ -16,11 +16,9 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
-<<<<<<< HEAD
-=======
 import org.json.JSONArray;
 import org.json.JSONException;
->>>>>>> dianna.display
+
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -46,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
 //    CheckBox chicken, beef, rice;
     Button ingredients;
+    Button login;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,8 +92,19 @@ public class MainActivity extends AppCompatActivity {
                 recipeNames.clear();
             }
         });
-    }
+    //Button for user log in ans sign up.
+        login = (Button)findViewById(R.id.login);
+        login.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                    Intent intent = new Intent(MainActivity.this, MenuLogin.class);
+                    startActivity(intent);
+            }
+
+        });
+
+    }
 
     public ArrayList<CheckBox> getCheckBoxes(){
         ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();
@@ -103,38 +113,6 @@ public class MainActivity extends AppCompatActivity {
         return checkBoxes;
     }
 
-<<<<<<< HEAD
-    public void selectItems(View v){
-        boolean checked = ((CheckBox) v).isChecked();
-        String words;
-        switch (v.getId()) {
-            case R.id.chicken:
-                words = chicken.getText().toString();
-                if (checked) {
-                    selection.add(words);
-                } else {
-                    selection.remove(words);
-                }
-                break;
-            case R.id.beef:
-                words = beef.getText().toString();
-                if (checked){
-                    selection.add(words);
-                }
-                else{
-                    selection.remove(words);
-                }
-                break;
-            case R.id.rice:
-                words = rice.getText().toString();
-                if (checked){
-                    selection.add(words);
-                }
-                else{
-                    selection.remove(words);
-                }
-                break;
-=======
 
     private static void findCheckBoxes(ViewGroup viewGroup, ArrayList<CheckBox> checkBoxes) {
         for (int i=0, N = viewGroup.getChildCount(); i<N; i++){
@@ -162,7 +140,6 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 checkedIngredients.remove(checkBoxes.get(i).getText().toString());
             }
->>>>>>> dianna.display
         }
         Log.i("List", checkedIngredients.toString());
         selection = checkedIngredients;

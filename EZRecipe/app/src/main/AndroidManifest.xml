@@ -19,6 +19,8 @@
         </activity>
         <activity android:name=".MenuActivity" />
         <activity android:name=".ViewRecipe"></activity>
+        <activity android:name=".MenuLogin"/>
+
     </application>
 
 </manifest>
