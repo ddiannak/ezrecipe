@@ -28,7 +28,9 @@ public class MenuActivity extends Activity {
         ArrayList<String> recipeIDs = (ArrayList<String>) intent.getSerializableExtra("recipeIDs");
         ArrayList<String> recipeNames = (ArrayList<String>) intent.getSerializableExtra("recipeNames");
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        //sets value, adds list of new recipe searches to previous list.
         ref.setValue(recipeIDs);
+        ref.push().setValue(recipeIDs);
 //        Button recipe1 = (Button)findViewById(R.id.recipe1);
 //        recipe1.setText(recipeNames.get(0));
         Spinner recipes = (Spinner)findViewById(R.id.recipeDropdown);
