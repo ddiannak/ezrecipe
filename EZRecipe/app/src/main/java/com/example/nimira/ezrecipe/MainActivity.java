@@ -12,6 +12,8 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -50,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
                     String data = response.getBody().toString();
                     Log.i("data", data);
                     JSONArray root = new JSONArray(data);
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+                    ref.setValue(data);
                     for (int i=0; i<root.length(); i++){
                         recipeIDs.add(root.getJSONObject(i).getString("id"));
                         recipeNames.add(root.getJSONObject(i).getString("title"));

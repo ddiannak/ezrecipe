@@ -7,6 +7,9 @@ import android.support.annotation.Nullable;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 /**
@@ -24,6 +27,8 @@ public class MenuActivity extends Activity {
         Intent intent = getIntent();
         ArrayList<String> recipeIDs = (ArrayList<String>) intent.getSerializableExtra("recipeIDs");
         ArrayList<String> recipeNames = (ArrayList<String>) intent.getSerializableExtra("recipeNames");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        ref.setValue(recipeIDs);
 //        Button recipe1 = (Button)findViewById(R.id.recipe1);
 //        recipe1.setText(recipeNames.get(0));
         Spinner recipes = (Spinner)findViewById(R.id.recipeDropdown);
