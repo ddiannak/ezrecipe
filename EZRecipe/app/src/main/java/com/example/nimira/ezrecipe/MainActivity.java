@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
@@ -19,6 +21,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.concurrent.ExecutionException;
 
 
@@ -27,16 +30,23 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> recipeIDs = new ArrayList<>();
     ArrayList<String> recipeNames = new ArrayList<>();
     ArrayList<String> recipeImages = new ArrayList<>();
-    Button ingredients;
-    boolean isSelected;
-
+    ArrayList<String> addedIngredients = new ArrayList<>();
+    Button ingredients, addIngredients, getFood, done;
+    EditText search;
+    LinearLayout linearMain;
+    CheckBox checkBox;
+    Integer checkBoxCount = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        linearMain = (LinearLayout)findViewById(R.id.linear_main);
+        search = (EditText)findViewById(R.id.search);
+        getFood = (Button)findViewById(R.id.getFood);
+        done = (Button)findViewById(R.id.done);
         ingredients = (Button)findViewById(R.id.ingredients);
-        isSelected = false;
+
         ingredients.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,8 +77,88 @@ public class MainActivity extends AppCompatActivity {
                 recipeImages.clear();
             }
         });
-    }
 
+        addIngredients = (Button)findViewById(R.id.addIngredients);
+        addIngredients.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                addIngredients.setVisibility(View.GONE);
+                search.setVisibility(View.VISIBLE);
+                getFood.setVisibility(View.VISIBLE);
+                done.setVisibility(View.VISIBLE);
+            }
+        });
+
+        done.setOnClickListener( new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                addIngredients.setVisibility(View.VISIBLE);
+                search.setVisibility(View.GONE);
+                getFood.setVisibility(View.GONE);
+                done.setVisibility(View.GONE);
+                Collections.sort(addedIngredients, String.CASE_INSENSITIVE_ORDER);
+                Log.i("addedIngredients array", addedIngredients.toString());
+                for (int i=0; i<addedIngredients.size(); i++){
+                    checkBox = new CheckBox(MainActivity.this);
+                    checkBox.setId(i);
+                    checkBox.setText(addedIngredients.get(i));
+                    checkBox.setOnClickListener(new View.OnClickListener(){
+
+                        @Override
+                        public void onClick(View v) {
+                            ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();
+                            ArrayList<String> checkedIngredients = new ArrayList<String>();
+                            checkBoxes = getCheckBoxes();
+                            for (int i = 0; i < checkBoxes.size(); i++) {
+                                if (checkBoxes.get(i).isChecked()) {
+                                    checkedIngredients.add(checkBoxes.get(i).getText().toString());
+                                } else {
+                                    checkedIngredients.remove(checkBoxes.get(i).getText().toString());
+                                }
+                            }
+                            Log.i("List", checkedIngredients.toString());
+                            selection = checkedIngredients;
+                        }
+                    });
+                    linearMain.addView(checkBox);
+                }
+            }
+        });
+
+        getFood.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.i("search",search.getText().toString());
+                String searchInfo = search.getText().toString();
+                addedIngredients.add(searchInfo);
+//                checkBox = new CheckBox(MainActivity.this);
+//                checkBox.setId(checkBoxCount);
+//                checkBox.setText(searchInfo);
+//                checkBox.setOnClickListener(new View.OnClickListener(){
+//
+//                    @Override
+//                    public void onClick(View v) {
+//                        ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();
+//                        ArrayList<String> checkedIngredients = new ArrayList<String>();
+//                        checkBoxes = getCheckBoxes();
+//                        for (int i = 0; i < checkBoxes.size(); i++) {
+//                            if (checkBoxes.get(i).isChecked()) {
+//                                checkedIngredients.add(checkBoxes.get(i).getText().toString());
+//                            } else {
+//                                checkedIngredients.remove(checkBoxes.get(i).getText().toString());
+//                            }
+//                        }
+//                        Log.i("List", checkedIngredients.toString());
+//                        selection = checkedIngredients;
+//                    }
+//                });
+//                linearMain.addView(checkBox);
+                checkBoxCount++;
+            }
+        });
+
+    }
 
     public ArrayList<CheckBox> getCheckBoxes(){
         ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();
@@ -89,23 +179,23 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    public void selectItems(View v) {
-        ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();
-        ArrayList<String> checkedIngredients = new ArrayList<String>();
-        checkBoxes = getCheckBoxes();
-        boolean checked = ((CheckBox) v).isChecked();
-
-        String words;
-        for (int i = 0; i < checkBoxes.size(); i++) {
-            if (checkBoxes.get(i).isChecked()) {
-                checkedIngredients.add(checkBoxes.get(i).getText().toString());
-            } else {
-                checkedIngredients.remove(checkBoxes.get(i).getText().toString());
-            }
-        }
-        Log.i("List", checkedIngredients.toString());
-        selection = checkedIngredients;
-    }
+//    public void selectItems(View v) {
+//        ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();
+//        ArrayList<String> checkedIngredients = new ArrayList<String>();
+//        checkBoxes = getCheckBoxes();
+//        boolean checked = ((CheckBox) v).isChecked();
+//
+//        String words;
+//        for (int i = 0; i < checkBoxes.size(); i++) {
+//            if (checkBoxes.get(i).isChecked()) {
+//                checkedIngredients.add(checkBoxes.get(i).getText().toString());
+//            } else {
+//                checkedIngredients.remove(checkBoxes.get(i).getText().toString());
+//            }
+//        }
+//        Log.i("List", checkedIngredients.toString());
+//        selection = checkedIngredients;
+//    }
 
     private class CallMashapeAsync extends AsyncTask<String, Integer, HttpResponse<JsonNode>> {
 
@@ -125,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
                         .asJson();
 //                Log.i("request", "" + request);
             } catch (UnirestException e) {
-                // TODO Auto-generated catch block
+                // TO8DO Auto-generated catch block
                 e.printStackTrace();
             }
 

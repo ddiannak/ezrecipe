@@ -1,137 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/linear_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="com.example.nimira.ezrecipe.MainActivity">
 
-    <CheckBox
-        android:id="@+id/spinach"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/pork"
-        android:layout_alignStart="@+id/pork"
-        android:layout_below="@+id/pork"
-        android:layout_marginTop="40dp"
-        android:text="spinach" />
-
-    <CheckBox
-        android:id="@+id/rice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/bread"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/bread"
-        android:onClick="selectItems"
-        android:text="rice" />
-
-    <CheckBox
-        android:id="@+id/beef"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/chicken"
-        android:layout_alignStart="@+id/chicken"
-        android:layout_below="@+id/rice"
-        android:layout_marginTop="47dp"
-        android:onClick="selectItems"
-        android:text="beef" />
-
-    <CheckBox
-        android:id="@+id/bread"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/beef"
-        android:layout_alignBottom="@+id/beef"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="69dp"
-        android:layout_marginRight="69dp"
-        android:onClick="selectItems"
-        android:text="bread" />
-
-    <CheckBox
-        android:id="@+id/pork"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/beef"
-        android:layout_alignStart="@+id/beef"
-        android:layout_below="@+id/beef"
-        android:layout_marginTop="38dp"
-        android:onClick="selectItems"
-        android:text="pork" />
-
-    <CheckBox
-        android:id="@+id/chicken"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="40dp"
-        android:layout_marginStart="40dp"
-        android:onClick="selectItems"
-        android:text="chicken" />
-
-    <CheckBox
-        android:id="@+id/salmon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/spinach"
-        android:layout_alignStart="@+id/spinach"
-        android:layout_below="@+id/spinach"
-        android:layout_marginTop="54dp"
-        android:onClick="selectItems"
-        android:text="salmon" />
-
-    <CheckBox
-        android:id="@+id/eggs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/salmon"
-        android:layout_alignBottom="@+id/salmon"
-        android:layout_alignEnd="@+id/bread"
-        android:layout_alignRight="@+id/bread"
-        android:onClick="selectItems"
-        android:text="eggs" />
-
-    <CheckBox
-        android:id="@+id/broccoli"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/spinach"
-        android:layout_alignLeft="@+id/bread"
-        android:layout_alignStart="@+id/bread"
-        android:onClick="selectItems"
-        android:text="broccoli" />
-
-    <CheckBox
-        android:id="@+id/potatoes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/broccoli"
-        android:layout_alignStart="@+id/broccoli"
-        android:layout_alignTop="@+id/spinach"
-        android:onClick="selectItems"
-        android:text="potatoes" />
 
     <Button
         android:id="@+id/ingredients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/eggs"
         android:layout_marginTop="31dp"
-        android:layout_toEndOf="@+id/spinach"
-        android:layout_toRightOf="@+id/spinach"
-        android:text="Get Recipes!" />
+        android:text="Get Recipes!"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/addIngredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ingredients"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:visibility="gone"
+        tools:text="Search" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/getFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="Add"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="Done"
+        android:visibility="gone" />
+</LinearLayout>
+
+</LinearLayout>
 
 
