@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_menu"
     android:layout_width="match_parent"
@@ -17,11 +16,10 @@
         android:id="@+id/openrecipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:elevation="0dp"
-        tools:ignore="UnusedAttribute"
-        tools:text="open recipe" />
+        android:text="open recipe"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <Spinner
         android:id="@+id/recipeDropdown"
@@ -29,25 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
-
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:layout_below="@+id/recipeDropdown"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:id="@+id/getRecipe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="29dp"
-        android:text="Button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="126dp" />
 
     <TextView
         android:id="@+id/infoview"
@@ -56,6 +37,7 @@
         android:layout_below="@+id/openrecipe"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="69dp"
-        tools:text="info" />
+        android:text="info"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>
