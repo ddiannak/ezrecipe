@@ -4,6 +4,10 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> ae10d4aec0e352a0439d9dfc0a714807714154ae
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
@@ -12,9 +16,13 @@
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
+<<<<<<< HEAD
 =======
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
 >>>>>>> dianna
+=======
+
+>>>>>>> ae10d4aec0e352a0439d9dfc0a714807714154ae
         <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>

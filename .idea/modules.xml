@@ -3,12 +3,22 @@
   <component name="ProjectModuleManager">
     <modules>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/EZrecipe.iml" filepath="$PROJECT_DIR$/EZrecipe.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/unirest-java-1.4.9/unirest-java-1.4.9.iml" filepath="$PROJECT_DIR$/unirest-java-1.4.9/unirest-java-1.4.9.iml" />
 =======
       <module fileurl="file://$PROJECT_DIR$/.idea/ezrecipe.iml" filepath="$PROJECT_DIR$/.idea/ezrecipe.iml" />
 >>>>>>> dianna
+=======
+
+      <module fileurl="file://$PROJECT_DIR$/.idea/ezrecipe.iml" filepath="$PROJECT_DIR$/.idea/ezrecipe.iml" />
+
+      <module fileurl="file://$PROJECT_DIR$/EZrecipe.iml" filepath="$PROJECT_DIR$/EZrecipe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/unirest-java-1.4.9/unirest-java-1.4.9.iml" filepath="$PROJECT_DIR$/unirest-java-1.4.9/unirest-java-1.4.9.iml" />
+
+>>>>>>> ae10d4aec0e352a0439d9dfc0a714807714154ae
     </modules>
   </component>
 </project>
