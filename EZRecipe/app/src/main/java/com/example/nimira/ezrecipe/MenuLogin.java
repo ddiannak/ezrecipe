@@ -34,7 +34,6 @@ public class MenuLogin extends Activity implements View.OnClickListener{
     private Button buttonSignIn;
     private ProgressDialog progressDialog;
 
-
     //defining firebaseauth object
     private FirebaseAuth firebaseAuth;
 

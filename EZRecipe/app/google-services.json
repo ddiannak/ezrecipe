@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "567464905225-qns02lquqn1h5ego53dhc9vrpr80t9au.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nimira.ezrecipe",
+            "certificate_hash": "95311b5b16246b678f6e85ef45026758b981c80c"
+          }
+        },
+        {
           "client_id": "567464905225-eucahjfr32kkgrdo58g1mej52rloudlo.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -36,6 +44,37 @@
               "client_type": 3
             }
           ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567464905225:android:a00cc69831305383",
+        "android_client_info": {
+          "package_name": "com.nimira.ezrecipe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "567464905225-eucahjfr32kkgrdo58g1mej52rloudlo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrtCiWGmYlMWQ-bdmgt2VAqxcmKC2uzR8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

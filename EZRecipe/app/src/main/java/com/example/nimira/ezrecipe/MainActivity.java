@@ -9,7 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.concurrent.ExecutionException;
 
 
@@ -31,19 +33,26 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> recipeIDs = new ArrayList<>();
     ArrayList<String> recipeNames = new ArrayList<>();
 
-    TextView text;
-//    TextView test;
-    CheckBox chicken, beef, rice;
-    Button ingredients;
-    Button login;
+    ArrayList<String> recipeImages = new ArrayList<>();
+    ArrayList<String> addedIngredients = new ArrayList<>();
+    Button ingredients, addIngredients, getFood, done, delete,login;
+    EditText search;
+    LinearLayout linearMain;
+    CheckBox checkBox;
+    Integer checkBoxCount = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String items="";
-//        text = (TextView)findViewById(R.id.chickenTest);
-//        test = (TextView) findViewById(R.id.textView);
+
+        linearMain = (LinearLayout)findViewById(R.id.buttons);
+        search = (EditText)findViewById(R.id.search);
+        getFood = (Button)findViewById(R.id.getFood);
+        done = (Button)findViewById(R.id.done);
         ingredients = (Button)findViewById(R.id.ingredients);
+        delete = (Button)findViewById(R.id.delete);
+
         ingredients.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,10 +66,12 @@ public class MainActivity extends AppCompatActivity {
                     for (int i=0; i<root.length(); i++){
                         recipeIDs.add(root.getJSONObject(i).getString("id"));
                         recipeNames.add(root.getJSONObject(i).getString("title"));
+                        recipeImages.add(root.getJSONObject(i).getString("image"));
                     }
                     Intent intent = new Intent(MainActivity.this, MenuActivity.class);
                     intent.putExtra("recipeIDs", recipeIDs);
                     intent.putExtra("recipeNames", recipeNames);
+                    intent.putExtra("recipeImage", recipeImages);
                     startActivity(intent);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -71,6 +82,56 @@ public class MainActivity extends AppCompatActivity {
                 }
                 recipeIDs.clear();
                 recipeNames.clear();
+                recipeImages.clear();
+            }
+        });
+
+        addIngredients = (Button)findViewById(R.id.addIngredients);
+        addIngredients.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                addIngredients.setVisibility(View.GONE);
+                search.setVisibility(View.VISIBLE);
+                getFood.setVisibility(View.VISIBLE);
+                done.setVisibility(View.VISIBLE);
+            }
+        });
+
+        done.setOnClickListener( new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                addIngredients.setVisibility(View.VISIBLE);
+                search.setVisibility(View.GONE);
+                getFood.setVisibility(View.GONE);
+                done.setVisibility(View.GONE);
+                search.setText(null);
+            }
+        });
+
+        getFood.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                addedIngredients.add(search.getText().toString());
+                Collections.sort(addedIngredients, String.CASE_INSENSITIVE_ORDER);
+                Log.i("addedIngredients array", addedIngredients.toString());
+                displayCheckBoxes();
+                search.setText(null);
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                selectItems(v);
+                for (int i=0; i<selection.size(); i++){
+                    addedIngredients.remove(selection.get(i));
+                }
+                Log.i("items deleted", selection.toString());
+                Log.i("ingredients left", addedIngredients.toString());
+                selection.clear();
+                displayCheckBoxes();
             }
         });
     //Button for user log in ans sign up.
@@ -83,7 +144,24 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
             }
 
-        });
+        });}
+
+
+    public void displayCheckBoxes(){
+        linearMain.removeAllViewsInLayout();
+        for (int i=0; i<addedIngredients.size(); i++){
+            checkBox = new CheckBox(MainActivity.this);
+            checkBox.setId(i);
+            checkBox.setText(addedIngredients.get(i));
+            checkBox.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    selectItems(v);
+                }
+            });
+            linearMain.addView(checkBox);
+        }
 
     }
 
@@ -110,10 +188,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();
         ArrayList<String> checkedIngredients = new ArrayList<String>();
         checkBoxes = getCheckBoxes();
-        boolean checked = ((CheckBox) v).isChecked();
 
-        String words;
-        Log.i("size of checkboxes", ""+checkBoxes.size());
         for (int i = 0; i < checkBoxes.size(); i++) {
             if (checkBoxes.get(i).isChecked()) {
                 checkedIngredients.add(checkBoxes.get(i).getText().toString());
@@ -141,9 +216,9 @@ public class MainActivity extends AppCompatActivity {
                         .header("X-Mashape-Key", "gNrvLXTPTNmshsXWUXLzm7VwvkJWp1m47mVjsn5eRbKVitWD4i")
                         .header("Accept", "application/json")
                         .asJson();
-                Log.i("request", "" + request);
+//                Log.i("request", "" + request);
             } catch (UnirestException e) {
-                // TODO Auto-generated catch block
+                // TO8DO Auto-generated catch block
                 e.printStackTrace();
             }
 
@@ -155,20 +230,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(HttpResponse<JsonNode> response) {
-//            String answer = response.getBody().toString();
-////            TextView txtView = (TextView) findViewById(R.id.textView1);
-//            try {
-//                // JSONObject root = new JSONObject(answer);
-//                JSONArray root = new JSONArray(answer);
-//                // JSONArray recipe_name = root.getJSONArray(0);
-//                JSONObject id_num = root.getJSONObject(0);
-//                int id = id_num.getInt("id");
-//                String idstr = id_num.getString("id");
-//                text.setText(idstr);
-//            }
-//            catch (JSONException e) {
-//                text.setText("failed: make sure you are getting the right type");
-////                text.setText(answer);
+
         }
     }
 }
