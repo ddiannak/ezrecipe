@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">EZRecipe</string>
+    <string name="Button">view recipe</string>
+    <string name="ImageView">recipe image</string>
 </resources>
