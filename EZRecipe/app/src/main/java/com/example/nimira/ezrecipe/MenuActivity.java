@@ -2,6 +2,7 @@ package com.example.nimira.ezrecipe;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,6 +19,9 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.squareup.picasso.Picasso;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -54,17 +58,14 @@ public class MenuActivity extends Activity {
         getRecipe.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                text = recipes.getSelectedItem().toString();
-//                position=recipes.getSelectedItemPosition();
-                Log.i("position1", ""+position);
                 try {
-                    HttpResponse<JsonNode> response = new CallMashapeAsync().execute("").get();
-                    String data = response.getBody().toString();
-                    Log.i("data", data);
-//                    Picasso.with(getApplicationContext()).load(recipeImages.get(position)).into(image);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
+                String getselected = recipes.getSelectedItem().toString();
+                for (int i = 0;i<recipeNames.size();i++) {
+                    if (recipeNames.get(i).matches(getselected)) {
+                        new CallMashapeAsync().execute(recipeIDs.get(i));
+                    }
+                }
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -86,28 +87,20 @@ public class MenuActivity extends Activity {
     private class CallMashapeAsync extends AsyncTask<String, Integer, HttpResponse<JsonNode>> {
 
         protected HttpResponse<JsonNode> doInBackground(String... msg) {
-//            String items = "";
-//            for (int i=0; i<selection.size(); i++){
-//                items = items + "" + selection.get(i) + "%2C";
-//            }
-            String recipeID = recipeIDs.get(position);
-            Log.i("position2", ""+position);
-            Log.i("recipeID", recipeID);
-            String url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + recipeID + "/information?includeNutrition=false";
-//            Log.i("url: ", url);
+            String items = "";
+            String url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/"+msg[0]+"/information";
+            Log.i("url: ", url);
             HttpResponse<JsonNode> request = null;
             try {
-
                 request = Unirest.get(url)
                         .header("X-Mashape-Key", "gNrvLXTPTNmshsXWUXLzm7VwvkJWp1m47mVjsn5eRbKVitWD4i")
                         .header("Accept", "application/json")
                         .asJson();
                 Log.i("request", "" + request);
             } catch (UnirestException e) {
-
+                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-//
             return request;
         }
 
@@ -116,20 +109,23 @@ public class MenuActivity extends Activity {
         }
 
         protected void onPostExecute(HttpResponse<JsonNode> response) {
-//            String answer = response.getBody().toString();
-////            TextView txtView = (TextView) findViewById(R.id.textView1);
-//            try {
-//                // JSONObject root = new JSONObject(answer);
-//                JSONArray root = new JSONArray(answer);
-//                // JSONArray recipe_name = root.getJSONArray(0);
-//                JSONObject id_num = root.getJSONObject(0);
-//                int id = id_num.getInt("id");
-//                String idstr = id_num.getString("id");
-//                text.setText(idstr);
-//            }
-//            catch (JSONException e) {
-//                text.setText("failed: make sure you are getting the right type");
-////                text.setText(answer);
+            // Parses json response for printing out the string of recipe id's and the response
+            String answer = response.getBody().toString();
+            //TextView infoview = (TextView)findViewById(R.id.infoview);
+            // infoview.setText(answer);
+            try {
+                JSONObject root = new JSONObject(answer);
+                // JSONArray recipe_name = root.getJSONArray(0);
+                //  JSONObject id_num = root.getJSONObject("sourceUrl");
+                String idstr = root.getString("sourceUrl");
+               // infoview.setText(idstr);
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(idstr));
+                startActivity(i);
+            }
+            catch (JSONException e) {
+                Log.i("failed:", " make sure you are getting the right type");
+              //  infoview.setText(answer);
+            }
         }
     }
 
