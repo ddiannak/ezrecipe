@@ -12,6 +12,10 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -31,22 +35,36 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> recipeNames = new ArrayList<>();
     ArrayList<String> recipeImages = new ArrayList<>();
     ArrayList<String> addedIngredients = new ArrayList<>();
-    Button ingredients, addIngredients, getFood, done, delete;
+    Button ingredients, addIngredients, getFood, done, delete, login;
     EditText search;
     LinearLayout linearMain;
     CheckBox checkBox;
-    Integer checkBoxCount = 0;
+    String email, uid;
+    private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         linearMain = (LinearLayout)findViewById(R.id.buttons);
         search = (EditText)findViewById(R.id.search);
         getFood = (Button)findViewById(R.id.getFood);
         done = (Button)findViewById(R.id.done);
         ingredients = (Button)findViewById(R.id.ingredients);
         delete = (Button)findViewById(R.id.delete);
+        login = (Button)findViewById(R.id.login);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // User is signed in
+            email = user.getEmail();
+            Log.i("email", email);
+            uid = user.getUid();
+            Log.i("uid", uid);
+        } else {
+            // No user is signed in
+            Log.i("email", "none");
+        }
 
         ingredients.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -110,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("addedIngredients array", addedIngredients.toString());
                 displayCheckBoxes();
                 search.setText(null);
+                mDatabase.child("users").child(uid).child("fridge").setValue(addedIngredients);
             }
         });
 
@@ -125,6 +144,14 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("ingredients left", addedIngredients.toString());
                 selection.clear();
                 displayCheckBoxes();
+            }
+        });
+
+        login.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }
