@@ -14,8 +14,11 @@ import android.widget.LinearLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -45,14 +48,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        linearMain = (LinearLayout)findViewById(R.id.buttons);
-        search = (EditText)findViewById(R.id.search);
-        getFood = (Button)findViewById(R.id.getFood);
-        done = (Button)findViewById(R.id.done);
-        ingredients = (Button)findViewById(R.id.ingredients);
-        delete = (Button)findViewById(R.id.delete);
-        login = (Button)findViewById(R.id.login);
+        mDatabase = FirebaseDatabase.getInstance().getReference("users");
+        linearMain = (LinearLayout) findViewById(R.id.buttons);
+        search = (EditText) findViewById(R.id.search);
+        getFood = (Button) findViewById(R.id.getFood);
+        done = (Button) findViewById(R.id.done);
+        ingredients = (Button) findViewById(R.id.ingredients);
+        delete = (Button) findViewById(R.id.delete);
+        login = (Button) findViewById(R.id.login);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -66,7 +69,31 @@ public class MainActivity extends AppCompatActivity {
             Log.i("email", "none");
         }
 
-        ingredients.setOnClickListener( new View.OnClickListener() {
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<String> ingredients = new ArrayList<>();
+                for (DataSnapshot i: dataSnapshot.getChildren()){
+                    IngredientsList list = i.getValue(IngredientsList.class);
+                    if (list.getUserId().equals(uid)) {
+                        ingredients = list.getIngredients();
+                    }
+                }
+                Log.i("ingredients", String.valueOf(ingredients));
+//                addedIngredients.clear();
+                addedIngredients = ingredients;
+                if (addedIngredients!=null) {
+                    displayCheckBoxes();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        ingredients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -74,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                     String data = response.getBody().toString();
                     Log.i("data", data);
                     JSONArray root = new JSONArray(data);
-                    for (int i=0; i<root.length(); i++){
+                    for (int i = 0; i < root.length(); i++) {
                         recipeIDs.add(root.getJSONObject(i).getString("id"));
                         recipeNames.add(root.getJSONObject(i).getString("title"));
                         recipeImages.add(root.getJSONObject(i).getString("image"));
@@ -97,8 +124,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        addIngredients = (Button)findViewById(R.id.addIngredients);
-        addIngredients.setOnClickListener( new View.OnClickListener(){
+        addIngredients = (Button) findViewById(R.id.addIngredients);
+        addIngredients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addIngredients.setVisibility(View.GONE);
@@ -108,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        done.setOnClickListener( new View.OnClickListener(){
+        done.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -120,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        getFood.setOnClickListener( new View.OnClickListener(){
+        getFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addedIngredients.add(search.getText().toString());
@@ -128,32 +155,37 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("addedIngredients array", addedIngredients.toString());
                 displayCheckBoxes();
                 search.setText(null);
-                mDatabase.child("users").child(uid).child("fridge").setValue(addedIngredients);
+
+                IngredientsList food = new IngredientsList(addedIngredients, uid, email);
+                mDatabase.child(uid).setValue(food);
+
             }
         });
 
-        delete.setOnClickListener(new View.OnClickListener(){
+        delete.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 selectItems(v);
-                for (int i=0; i<selection.size(); i++){
+                for (int i = 0; i < selection.size(); i++) {
                     addedIngredients.remove(selection.get(i));
                 }
                 Log.i("items deleted", selection.toString());
                 Log.i("ingredients left", addedIngredients.toString());
                 selection.clear();
+                
                 displayCheckBoxes();
             }
         });
 
-        login.setOnClickListener(new View.OnClickListener(){
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
+
     }
 
     public void displayCheckBoxes(){
@@ -207,6 +239,7 @@ public class MainActivity extends AppCompatActivity {
         Log.i("List", checkedIngredients.toString());
         selection = checkedIngredients;
     }
+
 
     private class CallMashapeAsync extends AsyncTask<String, Integer, HttpResponse<JsonNode>> {
 
