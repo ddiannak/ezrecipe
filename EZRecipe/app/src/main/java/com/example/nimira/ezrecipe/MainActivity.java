@@ -12,6 +12,13 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -22,6 +29,7 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.concurrent.ExecutionException;
 
 
@@ -31,32 +39,65 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> recipeNames = new ArrayList<>();
     ArrayList<String> recipeImages = new ArrayList<>();
     ArrayList<String> addedIngredients = new ArrayList<>();
-    Button ingredients, addIngredients, getFood, done, delete;
+    Button ingredients, addIngredients, getFood, done, delete, logout;
     EditText search;
     LinearLayout linearMain;
     CheckBox checkBox;
-    Integer checkBoxCount = 0;
+    String email, uid;
+    private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mDatabase = FirebaseDatabase.getInstance().getReference("users");
+        linearMain = (LinearLayout) findViewById(R.id.buttons);
+        search = (EditText) findViewById(R.id.search);
+        getFood = (Button) findViewById(R.id.getFood);
+        done = (Button) findViewById(R.id.done);
+        ingredients = (Button) findViewById(R.id.ingredients);
+        delete = (Button) findViewById(R.id.delete);
+        logout = (Button) findViewById(R.id.logout);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // User is signed in
+            email = user.getEmail();
+            uid = user.getUid();
+        } else {
+            // No user is signed in
+        }
 
-        linearMain = (LinearLayout)findViewById(R.id.buttons);
-        search = (EditText)findViewById(R.id.search);
-        getFood = (Button)findViewById(R.id.getFood);
-        done = (Button)findViewById(R.id.done);
-        ingredients = (Button)findViewById(R.id.ingredients);
-        delete = (Button)findViewById(R.id.delete);
+        //get ingredients from firebase users and display
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<String> ingredients = new ArrayList<>();
+                for (DataSnapshot i: dataSnapshot.getChildren()){
+                    IngredientsList list = i.getValue(IngredientsList.class);
+                    if (list.getUserId().equals(uid)) {
+                        ingredients = list.getIngredients();
+                    }
+                }
+                addedIngredients = ingredients;
+                if (addedIngredients!=null) {
+                    displayCheckBoxes();
+                }
+            }
 
-        ingredients.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        //button click for first api call to get list of recipes
+        ingredients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     HttpResponse<JsonNode> response = new CallMashapeAsync().execute().get();
                     String data = response.getBody().toString();
-                    Log.i("data", data);
                     JSONArray root = new JSONArray(data);
-                    for (int i=0; i<root.length(); i++){
+                    for (int i = 0; i < root.length(); i++) {
                         recipeIDs.add(root.getJSONObject(i).getString("id"));
                         recipeNames.add(root.getJSONObject(i).getString("title"));
                         recipeImages.add(root.getJSONObject(i).getString("image"));
@@ -79,8 +120,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        addIngredients = (Button)findViewById(R.id.addIngredients);
-        addIngredients.setOnClickListener( new View.OnClickListener(){
+        //button click to show search bar to add ingredient
+        addIngredients = (Button) findViewById(R.id.addIngredients);
+        addIngredients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addIngredients.setVisibility(View.GONE);
@@ -90,7 +132,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        done.setOnClickListener( new View.OnClickListener(){
+        //button click to hide search bar
+        done.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -102,47 +145,90 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        getFood.setOnClickListener( new View.OnClickListener(){
+        //button click to add ingredient to firebase as json and view as checkbox
+        getFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 addedIngredients.add(search.getText().toString());
-                Collections.sort(addedIngredients, String.CASE_INSENSITIVE_ORDER);
-                Log.i("addedIngredients array", addedIngredients.toString());
+                Collections.sort(addedIngredients, new Comparator<String>() {
+                    @Override
+                    public int compare(String o1, String o2) {
+                        if (o1 == null && o2 == null) {
+                            return 0;
+                        }
+                        if (o1 == null) {
+                            return 1;
+                        }
+                        if (o2 == null) {
+                            return -1;
+                        }
+                        return o1.compareTo(o2);
+                    }
+                });
                 displayCheckBoxes();
                 search.setText(null);
+
+                IngredientsList food = new IngredientsList(addedIngredients, uid, email);
+                mDatabase.child(uid).setValue(food);
+
             }
         });
 
-        delete.setOnClickListener(new View.OnClickListener(){
+        //button click to delete ingredient from firebase and view
+        delete.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 selectItems(v);
-                for (int i=0; i<selection.size(); i++){
+                mDatabase.child(uid).child("ingredients").removeValue();
+                for (int i = 0; i < selection.size(); i++) {
                     addedIngredients.remove(selection.get(i));
+//                    Log.i("index", String.valueOf(addedIngredients.indexOf(selection.get(i))));
+                    addedIngredients.removeAll(Collections.singleton(null));
                 }
-                Log.i("items deleted", selection.toString());
-                Log.i("ingredients left", addedIngredients.toString());
+                if (addedIngredients.size()==0){
+                    mDatabase.child(uid).removeValue();
+                }
+                else {
+                    mDatabase.child(uid).setValue(new IngredientsList(addedIngredients, uid, email));
+                }
+//                Log.i("items deleted", selection.toString());
+//                Log.i("ingredients left", addedIngredients.toString());
                 selection.clear();
+
                 displayCheckBoxes();
             }
         });
+
+        //button click to go to login activity
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Log.i("email after logout", email);
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            }
+        });
+
     }
 
     public void displayCheckBoxes(){
         linearMain.removeAllViewsInLayout();
         for (int i=0; i<addedIngredients.size(); i++){
-            checkBox = new CheckBox(MainActivity.this);
-            checkBox.setId(i);
-            checkBox.setText(addedIngredients.get(i));
-            checkBox.setOnClickListener(new View.OnClickListener(){
+            if (addedIngredients.get(i)!=null) {
+                checkBox = new CheckBox(MainActivity.this);
+                checkBox.setId(i);
+                checkBox.setText(addedIngredients.get(i));
+                checkBox.setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View v) {
-                    selectItems(v);
-                }
-            });
-            linearMain.addView(checkBox);
+                    @Override
+                    public void onClick(View v) {
+                        selectItems(v);
+                    }
+                });
+                linearMain.addView(checkBox);
+            }
         }
     }
 
@@ -177,9 +263,10 @@ public class MainActivity extends AppCompatActivity {
                 checkedIngredients.remove(checkBoxes.get(i).getText().toString());
             }
         }
-        Log.i("List", checkedIngredients.toString());
+//        Log.i("List", checkedIngredients.toString());
         selection = checkedIngredients;
     }
+
 
     private class CallMashapeAsync extends AsyncTask<String, Integer, HttpResponse<JsonNode>> {
 
@@ -189,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
                 items = items + "" + selection.get(i) + "%2C";
             }
             String url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients="+items+ "&limitLicense=false&number=10&ranking=1";
-            Log.i("url: ", url);
+//            Log.i("url: ", url);
             HttpResponse<JsonNode> request = null;
             try {
 
@@ -197,7 +284,6 @@ public class MainActivity extends AppCompatActivity {
                         .header("X-Mashape-Key", "gNrvLXTPTNmshsXWUXLzm7VwvkJWp1m47mVjsn5eRbKVitWD4i")
                         .header("Accept", "application/json")
                         .asJson();
-//                Log.i("request", "" + request);
             } catch (UnirestException e) {
                 // TO8DO Auto-generated catch block
                 e.printStackTrace();

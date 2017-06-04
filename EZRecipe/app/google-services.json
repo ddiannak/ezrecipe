@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "225171723459",
-    "firebase_url": "https://auth-dad3d.firebaseio.com",
-    "project_id": "auth-dad3d",
-    "storage_bucket": "auth-dad3d.appspot.com"
+    "project_number": "567464905225",
+    "firebase_url": "https://ezrecipes-eb755.firebaseio.com",
+    "project_id": "ezrecipes-eb755",
+    "storage_bucket": "ezrecipes-eb755.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:225171723459:android:87fcb66cc6ca320a",
+        "mobilesdk_app_id": "1:567464905225:android:cbd861d51d73be66",
         "android_client_info": {
-          "package_name": "com.google.firebase.quickstart.auth"
+          "package_name": "com.example.nimira.ezrecipe"
         }
       },
       "oauth_client": [
         {
-          "client_id": "225171723459-d39tp9bdra6mm1dmsknhvfj6pme9j0vu.apps.googleusercontent.com",
+          "client_id": "567464905225-qns02lquqn1h5ego53dhc9vrpr80t9au.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.google.firebase.quickstart.auth",
+            "package_name": "com.example.nimira.ezrecipe",
             "certificate_hash": "95311b5b16246b678f6e85ef45026758b981c80c"
           }
         },
         {
-          "client_id": "225171723459-ha7b8rd64mbufel02kfuhsr75id7qvb5.apps.googleusercontent.com",
+          "client_id": "567464905225-eucahjfr32kkgrdo58g1mej52rloudlo.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD5rT0XqL0Cuxt0VtVCW4EJxgw0zQcdLCs"
+          "current_key": "AIzaSyCrtCiWGmYlMWQ-bdmgt2VAqxcmKC2uzR8"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "225171723459-ha7b8rd64mbufel02kfuhsr75id7qvb5.apps.googleusercontent.com",
+              "client_id": "567464905225-eucahjfr32kkgrdo58g1mej52rloudlo.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -52,28 +52,20 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:225171723459:android:cbd861d51d73be66",
+        "mobilesdk_app_id": "1:567464905225:android:a00cc69831305383",
         "android_client_info": {
-          "package_name": "com.example.nimira.ezrecipe"
+          "package_name": "com.nimira.ezrecipe"
         }
       },
       "oauth_client": [
         {
-          "client_id": "225171723459-11nc27t9gvrfaohek2qss69b8t9r86rn.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.nimira.ezrecipe",
-            "certificate_hash": "f9e67b85ce626256eb058ad614b94f2049c3805a"
-          }
-        },
-        {
-          "client_id": "225171723459-ha7b8rd64mbufel02kfuhsr75id7qvb5.apps.googleusercontent.com",
+          "client_id": "567464905225-eucahjfr32kkgrdo58g1mej52rloudlo.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD5rT0XqL0Cuxt0VtVCW4EJxgw0zQcdLCs"
+          "current_key": "AIzaSyCrtCiWGmYlMWQ-bdmgt2VAqxcmKC2uzR8"
         }
       ],
       "services": {
@@ -81,13 +73,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "225171723459-ha7b8rd64mbufel02kfuhsr75id7qvb5.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2
