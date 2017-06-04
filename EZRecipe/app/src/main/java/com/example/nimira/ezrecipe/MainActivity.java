@@ -29,6 +29,7 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.concurrent.ExecutionException;
 
 
@@ -56,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         ingredients = (Button) findViewById(R.id.ingredients);
         delete = (Button) findViewById(R.id.delete);
         login = (Button) findViewById(R.id.login);
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // User is signed in
@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i("email", "none");
         }
 
+        //get ingredients from firebase users and display
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -150,8 +151,23 @@ public class MainActivity extends AppCompatActivity {
         getFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 addedIngredients.add(search.getText().toString());
-                Collections.sort(addedIngredients, String.CASE_INSENSITIVE_ORDER);
+                Collections.sort(addedIngredients, new Comparator<String>() {
+                    @Override
+                    public int compare(String o1, String o2) {
+                        if (o1 == null && o2 == null) {
+                            return 0;
+                        }
+                        if (o1 == null) {
+                            return 1;
+                        }
+                        if (o2 == null) {
+                            return -1;
+                        }
+                        return o1.compareTo(o2);
+                    }
+                });
                 Log.i("addedIngredients array", addedIngredients.toString());
                 displayCheckBoxes();
                 search.setText(null);
@@ -167,13 +183,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectItems(v);
+                mDatabase.child(uid).child("ingredients").removeValue();
                 for (int i = 0; i < selection.size(); i++) {
                     addedIngredients.remove(selection.get(i));
+//                    Log.i("index", String.valueOf(addedIngredients.indexOf(selection.get(i))));
+                    addedIngredients.removeAll(Collections.singleton(null));
+                }
+                if (addedIngredients.size()==0){
+                    mDatabase.child(uid).removeValue();
+                }
+                else {
+                    mDatabase.child(uid).setValue(new IngredientsList(addedIngredients, uid, email));
                 }
                 Log.i("items deleted", selection.toString());
                 Log.i("ingredients left", addedIngredients.toString());
                 selection.clear();
-                
+
                 displayCheckBoxes();
             }
         });
@@ -191,17 +216,19 @@ public class MainActivity extends AppCompatActivity {
     public void displayCheckBoxes(){
         linearMain.removeAllViewsInLayout();
         for (int i=0; i<addedIngredients.size(); i++){
-            checkBox = new CheckBox(MainActivity.this);
-            checkBox.setId(i);
-            checkBox.setText(addedIngredients.get(i));
-            checkBox.setOnClickListener(new View.OnClickListener(){
+            if (addedIngredients.get(i)!=null) {
+                checkBox = new CheckBox(MainActivity.this);
+//            checkBox.setId(i);
+                checkBox.setText(addedIngredients.get(i));
+                checkBox.setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View v) {
-                    selectItems(v);
-                }
-            });
-            linearMain.addView(checkBox);
+                    @Override
+                    public void onClick(View v) {
+                        selectItems(v);
+                    }
+                });
+                linearMain.addView(checkBox);
+            }
         }
     }
 
