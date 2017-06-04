@@ -60,14 +60,12 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         buttonSignup.setOnClickListener(this);
         buttonSignIn.setOnClickListener(this);
 
-        /*
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // Name, email address, and profile photo Url
-            String name = user.getDisplayName();
             String email = user.getEmail();
-            Uri photoUrl = user.getPhotoUrl();
-
+            Log.i("email at login page", email);
             // Check if user's email is verified
             boolean emailVerified = user.isEmailVerified();
 
@@ -75,7 +73,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             // authenticate with your backend server, if you have one. Use
             // FirebaseUser.getToken() instead.
             String uid = user.getUid();
-        }*/
+        }
 
     }
     @Override
@@ -94,25 +92,36 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
 
     private void signIn(){
-        String email = editTextEmail.getText().toString().trim();
-        String password  = editTextPassword.getText().toString().trim();
-        firebaseAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
-                            Toast.makeText(getApplicationContext(), "Sign in Success", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w("signInWithEmail:failure", task.getException());
-                            //display in short period of time
-                            Toast.makeText(getApplicationContext(), "Sign in failed", Toast.LENGTH_SHORT).show();
+        String email = editTextEmail.getText().toString();
+        String password  = editTextPassword.getText().toString();
+        if (email.equals("") && password.equals("")){
+            Toast.makeText(getApplicationContext(), "Enter email and password", Toast.LENGTH_SHORT).show();
+        }
+        else if (email.equals("")){
+            Toast.makeText(getApplicationContext(), "Enter email", Toast.LENGTH_SHORT).show();
+        }
+        else if (password.equals("")){
+            Toast.makeText(getApplicationContext(), "Enter password", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            firebaseAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                FirebaseUser user = firebaseAuth.getCurrentUser();
+                                Toast.makeText(getApplicationContext(), "Sign in Success", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w("signInWithEmail:failure", task.getException());
+                                //display in short period of time
+                                Toast.makeText(getApplicationContext(), "Sign in failed", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+        }
         return;
     }
     private void registerUser(){
