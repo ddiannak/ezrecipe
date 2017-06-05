@@ -20,19 +20,12 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/addIngredients"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:text="+" />
-
-        <Button
             android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Logout"/>
+            android:layout_marginLeft="270dp"
+            android:text="Logout"
+            android:textAlignment="center" />
     </LinearLayout>
 
     <EditText
@@ -83,33 +76,45 @@
         </LinearLayout>
     </ScrollView>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/ingredients"
-            android:layout_width="wrap_content"
+            android:id="@+id/addIngredients"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="start"
-            android:elevation="0dp"
-            android:text="Get Recipes!" />
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:text="+" />
 
         <Button
             android:id="@+id/delete"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/ingredients"
             android:layout_alignBottom="@+id/ingredients"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentTop="true"
             android:layout_gravity="right"
+            android:layout_weight="3.5"
             android:text="Delete" />
-    </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/ingredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="start"
+        android:elevation="0dp"
+        android:text="Get Recipes!" />
 
 </LinearLayout>
 
