@@ -5,15 +5,23 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import android.support.test.espresso.Espresso;
+import android.support.test.espresso.ViewAssertion;
+import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 
+//import static android.support.test.espresso.*;
 import static android.support.test.espresso.Espresso.closeSoftKeyboard;
+import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.assertion.ViewAssertions.*;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static com.mashape.relocation.util.Asserts.check;
 import static org.junit.Assert.*;
 
 /**
@@ -23,26 +31,31 @@ import static org.junit.Assert.*;
 @LargeTest
 public class MainActivityTest {
 
-    private String mStringToBetyped;
-
+    private String ingred1, ingred2;
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
             MainActivity.class);
 
     @Before
     public void initValidString() {
-        //Specify a valid string
-        mStringToBetyped = "apples";
+        //Specify valid strings
+        ingred1 = "apples";
+        ingred2 = "flour";
     }
 
     @Test
-    public void changeText_sameActivity() {
-       /* //Type text then press the button.
-        onView(withId(R.id.editTextUserInput)).perform(typeText(mStringToBetyped), closeSoftKeyboard());
-        onView(withId(R.id.changeTextBt)).perform(click());
-        //Check that hte text was changed.
-        onView(withId(R.id.textToBeChanged)).check(matches(withText(mStringToBetyped)));*/
+    public void input_ingredientsTest() {
+        //Open text edit view
+        onView(withId(R.id.addIngredients)).perform(click());
+        //Type text then press the button.
+        onView(withId(R.id.search)).perform(typeText(ingred1));
+        onView(withId(R.id.add)).perform(click());
+        //onView(withId(0)).perform(click());
+        //Check that the checkbox was created
+        onView(withId(0)).check(matches(withText(ingred1)));
+        Log.i("What", "how");
     }
+
     @Test
     public void onCreate() throws Exception {
 
@@ -50,7 +63,7 @@ public class MainActivityTest {
 
     @Test
     public void displayCheckBoxes() throws Exception {
-
+        onView(withId(0)).perform(click());
     }
 
     @Test

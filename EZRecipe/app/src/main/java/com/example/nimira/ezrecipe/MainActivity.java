@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> recipeNames = new ArrayList<>();
     ArrayList<String> recipeImages = new ArrayList<>();
     ArrayList<String> addedIngredients = new ArrayList<>();
-    Button ingredients, addIngredients, getFood, done, delete, logout;
+    Button ingredients, addIngredients, add, done, delete, logout;
     EditText search;
     LinearLayout linearMain;
     CheckBox checkBox;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference("users");
         linearMain = (LinearLayout) findViewById(R.id.buttons);
         search = (EditText) findViewById(R.id.search);
-        getFood = (Button) findViewById(R.id.getFood);
+        add = (Button) findViewById(R.id.add);
         done = (Button) findViewById(R.id.done);
         ingredients = (Button) findViewById(R.id.ingredients);
         delete = (Button) findViewById(R.id.delete);
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 addIngredients.setVisibility(View.GONE);
                 search.setVisibility(View.VISIBLE);
-                getFood.setVisibility(View.VISIBLE);
+                add.setVisibility(View.VISIBLE);
                 done.setVisibility(View.VISIBLE);
             }
         });
@@ -139,17 +139,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 addIngredients.setVisibility(View.VISIBLE);
                 search.setVisibility(View.GONE);
-                getFood.setVisibility(View.GONE);
+                add.setVisibility(View.GONE);
                 done.setVisibility(View.GONE);
                 search.setText(null);
             }
         });
 
         //button click to add ingredient to firebase as json and view as checkbox
-        getFood.setOnClickListener(new View.OnClickListener() {
+        add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                /* String getText = search.getText().toString();
                 Boolean found = false;
                 for (String str : addedIngredients) {
@@ -162,7 +161,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (!found) {
                         addedIngredients.add(getText);
-                    }*/
+                    }
+                */
 
                 if(!addedIngredients.contains(search.getText().toString())) {
                     addedIngredients.add(search.getText().toString());
