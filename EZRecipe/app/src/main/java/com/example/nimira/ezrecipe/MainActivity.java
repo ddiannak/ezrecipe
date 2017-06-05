@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> recipeNames = new ArrayList<>();
     ArrayList<String> recipeImages = new ArrayList<>();
     ArrayList<String> addedIngredients = new ArrayList<>();
-    Button ingredients, addIngredients, getFood, done, delete, login;
+    Button ingredients, addIngredients, getFood, done, delete, logout;
     EditText search;
     LinearLayout linearMain;
     CheckBox checkBox;
@@ -56,17 +56,14 @@ public class MainActivity extends AppCompatActivity {
         done = (Button) findViewById(R.id.done);
         ingredients = (Button) findViewById(R.id.ingredients);
         delete = (Button) findViewById(R.id.delete);
-        login = (Button) findViewById(R.id.login);
+        logout = (Button) findViewById(R.id.logout);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // User is signed in
             email = user.getEmail();
-            Log.i("email", email);
             uid = user.getUid();
-            Log.i("uid", uid);
         } else {
             // No user is signed in
-            Log.i("email", "none");
         }
 
         //get ingredients from firebase users and display
@@ -80,8 +77,6 @@ public class MainActivity extends AppCompatActivity {
                         ingredients = list.getIngredients();
                     }
                 }
-                Log.i("ingredients", String.valueOf(ingredients));
-//                addedIngredients.clear();
                 addedIngredients = ingredients;
                 if (addedIngredients!=null) {
                     displayCheckBoxes();
@@ -94,13 +89,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //button click for first api call to get list of recipes
         ingredients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     HttpResponse<JsonNode> response = new CallMashapeAsync().execute().get();
                     String data = response.getBody().toString();
-                    Log.i("data", data);
                     JSONArray root = new JSONArray(data);
                     for (int i = 0; i < root.length(); i++) {
                         recipeIDs.add(root.getJSONObject(i).getString("id"));
@@ -125,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //button click to show search bar to add ingredient
         addIngredients = (Button) findViewById(R.id.addIngredients);
         addIngredients.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //button click to hide search bar
         done.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -148,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //button click to add ingredient to firebase as json and view as checkbox
         getFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,7 +166,6 @@ public class MainActivity extends AppCompatActivity {
                         return o1.compareTo(o2);
                     }
                 });
-                Log.i("addedIngredients array", addedIngredients.toString());
                 displayCheckBoxes();
                 search.setText(null);
 
@@ -178,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //button click to delete ingredient from firebase and view
         delete.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -195,19 +193,21 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     mDatabase.child(uid).setValue(new IngredientsList(addedIngredients, uid, email));
                 }
-                Log.i("items deleted", selection.toString());
-                Log.i("ingredients left", addedIngredients.toString());
+//                Log.i("items deleted", selection.toString());
+//                Log.i("ingredients left", addedIngredients.toString());
                 selection.clear();
 
                 displayCheckBoxes();
             }
         });
 
-        login.setOnClickListener(new View.OnClickListener() {
+        //button click to go to login activity
+        logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
+                FirebaseAuth.getInstance().signOut();
+                Log.i("email after logout", email);
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         });
 
@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i=0; i<addedIngredients.size(); i++){
             if (addedIngredients.get(i)!=null) {
                 checkBox = new CheckBox(MainActivity.this);
-//            checkBox.setId(i);
+                checkBox.setId(i);
                 checkBox.setText(addedIngredients.get(i));
                 checkBox.setOnClickListener(new View.OnClickListener() {
 
@@ -263,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
                 checkedIngredients.remove(checkBoxes.get(i).getText().toString());
             }
         }
-        Log.i("List", checkedIngredients.toString());
+//        Log.i("List", checkedIngredients.toString());
         selection = checkedIngredients;
     }
 
@@ -276,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
                 items = items + "" + selection.get(i) + "%2C";
             }
             String url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients="+items+ "&limitLicense=false&number=10&ranking=1";
-            Log.i("url: ", url);
+//            Log.i("url: ", url);
             HttpResponse<JsonNode> request = null;
             try {
 
@@ -284,7 +284,6 @@ public class MainActivity extends AppCompatActivity {
                         .header("X-Mashape-Key", "gNrvLXTPTNmshsXWUXLzm7VwvkJWp1m47mVjsn5eRbKVitWD4i")
                         .header("Accept", "application/json")
                         .asJson();
-//                Log.i("request", "" + request);
             } catch (UnirestException e) {
                 // TO8DO Auto-generated catch block
                 e.printStackTrace();
