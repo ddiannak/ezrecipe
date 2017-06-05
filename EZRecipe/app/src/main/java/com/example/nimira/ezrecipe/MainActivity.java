@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -148,7 +149,8 @@ public class MainActivity extends AppCompatActivity {
         getFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String getText = search.getText().toString();
+
+               /* String getText = search.getText().toString();
                 Boolean found = false;
                 for (String str : addedIngredients) {
                     if (found) {
@@ -160,29 +162,34 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (!found) {
                         addedIngredients.add(getText);
-                    }
+                    }*/
 
-                Collections.sort(addedIngredients, new Comparator<String>() {
-                    @Override
-                    public int compare(String o1, String o2) {
-                        if (o1 == null && o2 == null) {
-                            return 0;
+                if(!addedIngredients.contains(search.getText().toString())) {
+                    addedIngredients.add(search.getText().toString());
+                    Collections.sort(addedIngredients, new Comparator<String>() {
+                        @Override
+                        public int compare(String o1, String o2) {
+                            if (o1 == null && o2 == null) {
+                                return 0;
+                            }
+                            if (o1 == null) {
+                                return 1;
+                            }
+                            if (o2 == null) {
+                                return -1;
+                            }
+                            return o1.compareTo(o2);
                         }
-                        if (o1 == null) {
-                            return 1;
-                        }
-                        if (o2 == null) {
-                            return -1;
-                        }
-                        return o1.compareTo(o2);
-                    }
-                });
-                displayCheckBoxes();
-                search.setText(null);
+                    });
+                    displayCheckBoxes();
+                    search.setText(null);
 
-                IngredientsList food = new IngredientsList(addedIngredients, uid, email);
-                mDatabase.child(uid).setValue(food);
-
+                    IngredientsList food = new IngredientsList(addedIngredients, uid, email);
+                    mDatabase.child(uid).setValue(food);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Duplicate Ingredient!",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
