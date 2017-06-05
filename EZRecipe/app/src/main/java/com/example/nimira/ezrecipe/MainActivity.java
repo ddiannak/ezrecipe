@@ -95,18 +95,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     HttpResponse<JsonNode> response = new CallMashapeAsync().execute().get();
-                    String data = response.getBody().toString();
-                    JSONArray root = new JSONArray(data);
-                    for (int i = 0; i < root.length(); i++) {
-                        recipeIDs.add(root.getJSONObject(i).getString("id"));
-                        recipeNames.add(root.getJSONObject(i).getString("title"));
-                        recipeImages.add(root.getJSONObject(i).getString("image"));
+                    if (response!=null) {
+                        String data = response.getBody().toString();
+                        JSONArray root = new JSONArray(data);
+                        for (int i = 0; i < root.length(); i++) {
+                            recipeIDs.add(root.getJSONObject(i).getString("id"));
+                            recipeNames.add(root.getJSONObject(i).getString("title"));
+                            recipeImages.add(root.getJSONObject(i).getString("image"));
+                        }
+                        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                        intent.putExtra("recipeIDs", recipeIDs);
+                        intent.putExtra("recipeNames", recipeNames);
+                        intent.putExtra("recipeImage", recipeImages);
+                        startActivity(intent);
                     }
-                    Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-                    intent.putExtra("recipeIDs", recipeIDs);
-                    intent.putExtra("recipeNames", recipeNames);
-                    intent.putExtra("recipeImage", recipeImages);
-                    startActivity(intent);
+                    else{
+                        Toast.makeText(getApplicationContext(), "No ingredients selected", Toast.LENGTH_SHORT).show();
+                    }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
@@ -289,24 +294,27 @@ public class MainActivity extends AppCompatActivity {
 
         protected HttpResponse<JsonNode> doInBackground(String... msg) {
             String items = "";
-            for (int i=0; i<selection.size(); i++){
-                items = items + "" + selection.get(i) + "%2C";
-            }
-            String url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients="+items+ "&limitLicense=false&number=10&ranking=1";
-//            Log.i("url: ", url);
             HttpResponse<JsonNode> request = null;
-            try {
+            if (selection.size()!=0){
+                for (int i = 0; i < selection.size(); i++) {
+                    items = items + "" + selection.get(i) + "%2C";
+                }
+                String url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=" + items + "&limitLicense=false&number=10&ranking=1";
+//            Log.i("url: ", url);
+                try {
 
-                request = Unirest.get(url)
-                        .header("X-Mashape-Key", "gNrvLXTPTNmshsXWUXLzm7VwvkJWp1m47mVjsn5eRbKVitWD4i")
-                        .header("Accept", "application/json")
-                        .asJson();
-            } catch (UnirestException e) {
-                // TO8DO Auto-generated catch block
-                e.printStackTrace();
+                    request = Unirest.get(url)
+                            .header("X-Mashape-Key", "gNrvLXTPTNmshsXWUXLzm7VwvkJWp1m47mVjsn5eRbKVitWD4i")
+                            .header("Accept", "application/json")
+                            .asJson();
+                } catch (UnirestException e) {
+                    // TO8DO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
 
             return request;
+
         }
 
 
