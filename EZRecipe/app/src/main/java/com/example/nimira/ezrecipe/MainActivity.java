@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             // No user is signed in
         }
 
-        //get ingredients from firebase users and display
+        //get ingredients from Firebase users and display
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
 
@@ -149,8 +148,20 @@ public class MainActivity extends AppCompatActivity {
         getFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String getText = search.getText().toString();
+                Boolean found = false;
+                for (String str : addedIngredients) {
+                    if (found) {
+                        continue;
+                    }
+                    if (str.matches(getText)) {
+                        found=true;
+                    }
+                }
+                if (!found) {
+                        addedIngredients.add(getText);
+                    }
 
-                addedIngredients.add(search.getText().toString());
                 Collections.sort(addedIngredients, new Comparator<String>() {
                     @Override
                     public int compare(String o1, String o2) {
@@ -210,7 +221,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         });
-
     }
 
     public void displayCheckBoxes(){
@@ -232,13 +242,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Checks view for checkboxes and returns an arraylist of checked boxes
     public ArrayList<CheckBox> getCheckBoxes(){
         ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();
         ViewGroup viewGroup = (ViewGroup) getWindow().getDecorView();
         findCheckBoxes(viewGroup, checkBoxes);
         return checkBoxes;
     }
-
 
     private static void findCheckBoxes(ViewGroup viewGroup, ArrayList<CheckBox> checkBoxes) {
         for (int i=0, N = viewGroup.getChildCount(); i<N; i++){
