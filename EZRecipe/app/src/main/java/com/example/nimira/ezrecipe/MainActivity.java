@@ -1,5 +1,6 @@
 package com.example.nimira.ezrecipe;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -7,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethod;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             , "lettuce", "mushroom", "oregano", "rice", "bread", "pork", "salt", "onion", "olive oil", "garlic"
             , "soy sauce", "pepper", "carrots", "red bell pepper", "ginger", "turkey", "spinach", "water", "sesame oil"
             , "sour cream", "cayenne pepper", "corn starch", "watermelon", "strawberry", "milk", "flour", "eggs"
+            , "shrip" , "lobster", "soy beans", "honey", "peanut butter", "lemon",
     };
     LinearLayout linearMain;
     CheckBox checkBox;
@@ -158,14 +162,24 @@ public class MainActivity extends AppCompatActivity {
                 done.setVisibility(View.GONE);
                 autoComplete.setText(null);
 //                search.setText(null);
+                try {
+                    InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                }catch (Exception e){
+                }
             }
+            
+            
         });
 
         //button click to add ingredient to firebase as json and view as checkbox
         getFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!addedIngredients.contains(autoComplete.getText().toString())) {
+                if (autoComplete.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(), "You can't add nothing!", Toast.LENGTH_SHORT).show();
+                }
+                else if(!addedIngredients.contains(autoComplete.getText().toString())) {
                     addedIngredients.add(autoComplete.getText().toString());
                     Collections.sort(addedIngredients, new Comparator<String>() {
                         @Override
