@@ -7,12 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
+import android.widget.ArrayAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -41,7 +42,14 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> recipeImages = new ArrayList<>();
     ArrayList<String> addedIngredients = new ArrayList<>();
     Button ingredients, addIngredients, getFood, done, delete, logout;
-    EditText search;
+//    EditText search;
+    AutoCompleteTextView autoComplete;
+    private static final String[] auto = new String[] {
+            "beef", "chicken", "salmon", "cheese", "butter", "tomato", "potato", "cilantro", "broccoli"
+            , "lettuce", "mushroom", "oregano", "rice", "bread", "pork", "salt", "onion", "olive oil", "garlic"
+            , "soy sauce", "pepper", "carrots", "red bell pepper", "ginger", "turkey", "spinach", "water", "sesame oil"
+            , "sour cream", "cayenne pepper", "corn starch", "watermelon", "strawberry", "milk", "flour", "eggs"
+    };
     LinearLayout linearMain;
     CheckBox checkBox;
     String email, uid;
@@ -52,7 +60,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mDatabase = FirebaseDatabase.getInstance().getReference("users");
         linearMain = (LinearLayout) findViewById(R.id.buttons);
-        search = (EditText) findViewById(R.id.search);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, auto);
+
+//        search = (EditText) findViewById(R.id.search);
+        autoComplete = (AutoCompleteTextView) findViewById(R.id.autoComplete);
+        autoComplete.setAdapter(adapter);
         getFood = (Button) findViewById(R.id.getFood);
         done = (Button) findViewById(R.id.done);
         ingredients = (Button) findViewById(R.id.ingredients);
@@ -127,7 +139,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addIngredients.setVisibility(View.GONE);
-                search.setVisibility(View.VISIBLE);
+//                search.setVisibility(View.VISIBLE);
+                autoComplete.setVisibility(View.VISIBLE);
                 getFood.setVisibility(View.VISIBLE);
                 done.setVisibility(View.VISIBLE);
             }
@@ -139,10 +152,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addIngredients.setVisibility(View.VISIBLE);
-                search.setVisibility(View.GONE);
+//                search.setVisibility(View.GONE);
+                autoComplete.setVisibility(View.GONE);
                 getFood.setVisibility(View.GONE);
                 done.setVisibility(View.GONE);
-                search.setText(null);
+                autoComplete.setText(null);
+//                search.setText(null);
             }
         });
 
@@ -150,8 +165,8 @@ public class MainActivity extends AppCompatActivity {
         getFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!addedIngredients.contains(search.getText().toString())) {
-                    addedIngredients.add(search.getText().toString());
+                if(!addedIngredients.contains(autoComplete.getText().toString())) {
+                    addedIngredients.add(autoComplete.getText().toString());
                     Collections.sort(addedIngredients, new Comparator<String>() {
                         @Override
                         public int compare(String o1, String o2) {
@@ -168,7 +183,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                     displayCheckBoxes();
-                    search.setText(null);
+//                    search.setText(null);
+                    autoComplete.setText(null);
 
                     IngredientsList food = new IngredientsList(addedIngredients, uid, email);
                     mDatabase.child(uid).setValue(food);
