@@ -17,13 +17,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.24"
+            android:text="Fridge" />
 
         <Button
             android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="270dp"
+            android:layout_marginLeft="200dp"
+            android:layout_weight="0.19"
             android:text="Logout"
             android:textAlignment="center" />
     </LinearLayout>
@@ -93,14 +102,13 @@
 
         <Button
             android:id="@+id/delete"
-            android:layout_width="match_parent"
+            android:layout_width="132dp"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/ingredients"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="false"
             android:layout_alignParentTop="true"
             android:layout_gravity="right"
-            android:layout_weight="3.5"
             android:text="Delete" />
 
     </LinearLayout>
