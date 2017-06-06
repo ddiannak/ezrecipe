@@ -1,7 +1,6 @@
 # Docs for CMPS 115
 
 This folder contains SCRUM and other relevant documents created during the development of EZ-Recipe
-- RELEASE 1.0: contains final deliverables for CMPS 115.
 - burndown chart visuals: contains visual snapshots of our scrum board.
 - powerpoints: contains powerpoints created for various purposes.
 - release plan: contains inital release plan for EZ-Recipe.
