@@ -1,10 +1,11 @@
-This folder contains the following documents created during the course of EZ-Recipe
-- Release Plans
-- Release (V1.0 Final Submission for CMPS 115)
-- Sprint Plans
-- Sprint Reports
-- Powerpoints
-- Snapshots of Visuals for Burndown Charts
+This folder contains SCRUM and other relevant documents created during the development of EZ-Recipe
+- RELEASE 1.0: contains final deliverables for CMPS 115.
+- burndown chart visuals: contains visual snapshots of our scrum board.
+- powerpoints: contains powerpoints created for various purposes.
+- release plan: contains inital release plan for EZ-Recipe.
+- sprint plans: contains initial SCRUM plans for each sprint.
+- sprint reports: contains final SCRUM reports for each sprint.
+
 
 We used Trello for our Scrum Boards and Burndown Charts
 - Sprint 1: https://trello.com/b/2FTEpvqU/sprint-%231
