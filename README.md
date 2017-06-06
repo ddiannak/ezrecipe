@@ -1,4 +1,4 @@
-# EZ-Recipe (Release 1.0 - 6/5/17)
+# EZRecipe (Release 1.0 - 6/5/17)
 
 Important: 
 - We used the Scrum methodology throughout our development process.
