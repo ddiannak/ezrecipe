@@ -1,4 +1,4 @@
-#FINAL DELIVERABLES FOR CMPS 115
+# FINAL DELIVERABLES FOR CMPS 115
 
 - InstallationGuideAndUserManual: Contains the Installation Guide and User Manual for EZRecipe
 - cmps115_sprint3report: Contains the SCRUM report for our last sprint.
