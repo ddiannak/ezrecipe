@@ -10,3 +10,8 @@ List of Group Members:
 - Miguel Calleja
 - Thong La
 - Brian Liu
+
+Important: 
+- We used the Scrum methodology throughout our development process.
+- The relevant documents are in the "Docs" folder. 
+- The final release documents, for CMPS 115, are located within the "Release" subfolder.
