@@ -14,4 +14,4 @@ List of Group Members:
 Important: 
 - We used the Scrum methodology throughout our development process.
 - The relevant documents are in the "Docs" folder. 
-- The final release documents, for CMPS 115, are located within the "Release" subfolder.
+- The final release documents, for CMPS 115, are located within the "Release 1.0" subfolder.
