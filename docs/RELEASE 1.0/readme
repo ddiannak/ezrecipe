@@ -1,5 +1,5 @@
 This folder contains the final deliverables for CMPS 115
 - SystemUnitTestReport: Contains all information for how user stories were tested.
 - TestingReport: Contains a prioritized list of user stories and unit tests for Acceptance Test.
-- WorkingPrototypeReport: Contains a list of all known bugs, and suggested user stories for Acceptance Test.
+- WorkingPrototypeReport: Contains a list of all known bugs & suggested user stories for Acceptance Test.
 - cmps115_sprint3report: Contains the SCRUM report for our last sprint.
