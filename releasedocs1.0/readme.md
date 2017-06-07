@@ -1,7 +1,7 @@
 # FINAL DELIVERABLES FOR CMPS 115
 
 - InstallationGuideAndUserManual: Contains the Installation Guide and User Manual for EZRecipe
-- cmps115_sprint3report: Contains the SCRUM report for our last sprint.
+- Sprint3Report: Contains the SCRUM report for our last sprint.
 
 Testing Sub-Folder contains:
 - SystemUnitTestReport: Contains all information for how user stories were tested.
